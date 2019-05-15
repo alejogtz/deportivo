@@ -1,10 +1,4 @@
-﻿--create schema fixture  authorization postgres;
---
-set search_path to fixture;
---
-set datestyle to sql,dmy;
---drop schema fixture cascade;
-
+﻿set datestyle to sql,dmy;
 
 insert into directort (
 	nombre,

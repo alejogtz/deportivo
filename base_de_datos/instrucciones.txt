@@ -1,0 +1,21 @@
+NOTA: No se le mueve nada a Laravel
+
+1.- Crear el usuario "dsos" script en : 01 script crear user dsos.txt
+2.- Crear la base de datos llamada "fixture" desde pgAdmin
+3.- Ejecutar el script: 02 schema fixture 
+    (No se usara otro schema será dentro del public, ya esta modificado el scritp solo es ejecutar) 
+4.- (Clonar, Mover o Descargar) El proyecto dentro de Apache, ya que este es el que corre PHP: C:\xampp\htdocs
+5.- Se debe modificar un archivo regristro de PHP
+    
+    Archivo: C:\xampp\php\php.ini
+    Descomentar las siguientes lineas (quitar ;)
+        extension=pdo_pgsql
+        extension=pgsql
+
+6.- Reiniciar Apache y "php artisan serve"
+
+Entrar a la siguiente URL
+http://localhost:8000/testDBConnection
+
+Si el mensaje es "DB Correctamente"
+Sino Rezarle a la virgencia
