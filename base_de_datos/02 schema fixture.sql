@@ -1,4 +1,18 @@
-﻿set datestyle to sql,dmy;
+﻿--drop table gol;
+--drop table tarjeta;
+--drop table cambio;
+--drop table partido;
+--drop table fase;
+--drop table tabla_general;
+--drop table tabla_clasificatoria;
+--drop table usuario;
+--drop table torneo;
+--drop table jugador;
+--drop table equipo;
+--drop table directort;
+
+
+set datestyle to sql,dmy;
 
 create table directort(
 	id_director SERIAL primary key,
@@ -62,6 +76,7 @@ create table partido(
 );
 
 create table gol(
+	id_partido int references partido(id_partido),
 	id_jugador int,
 	minuto int,
 	equipo_en_contra int CHECK (equipo_en_contra>0),
@@ -71,6 +86,7 @@ create table gol(
 );
 
 create table tarjeta(
+	id_partido int references partido(id_partido),
 	id_jugador int CHECK (id_jugador>0),
 	minuto int,
 	id_equipo int CHECK (id_equipo>0),
@@ -79,6 +95,7 @@ create table tarjeta(
 );
 
 create table cambio (
+	id_partido int references partido(id_partido),
 	id_equipo int CHECK (id_equipo>0),
 	jugador_entra int CHECK (jugador_entra>0),
 	jugador_sale int CHECK (jugador_sale>0),
@@ -87,7 +104,6 @@ create table cambio (
 );
 
 create table tabla_general(
-	id_tabla_general SERIAL primary key,
 	id_torneo int references torneo(id_torneo),
 	nombre_equipo varchar(50),
 	juegos_jugados int,
@@ -101,7 +117,6 @@ create table tabla_general(
 );
 
 create table tabla_clasificatoria(
-	id_tabla_clasificatoria SERIAL primary key,
 	id_torneo int references torneo(id_torneo),
 	ronda varchar (20),
 	id_equipo int CHECK (id_equipo>0),
