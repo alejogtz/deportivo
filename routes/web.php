@@ -14,11 +14,18 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-
+///aqui los de fixture
 
 Route::get('/', function () {
     return view('inicio');
 });
+
+//aqui los de registro
+Route::get('/', function () {
+    return view('inicio');
+});
+Route::view('/calendario', 'calendario');
+
 
 Route::get('testDBConnection', function(){
     try {
