@@ -9,24 +9,14 @@
 <script type="text/javascript" src="assets/jquery/jquery.mousewheel.js"></script>
 
 <h2>Selecciona una fecha por favor</h2>
+<div id="calendario">
+  <div id="dsel2" ></div>
+  <br>
+  <span id="fecha_select"></span>
+</div>
+<div id="tarjetas"></div>
 
 
-<div id="dsel2" ></div>
-<br>
-<span id="fecha_select"></span>
-
-<script type="text/javascript">
-  var calendarPicker2 = $("#dsel2").calendarPicker({
-    monthNames:["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-    dayNames: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
-    years:2,
-    months:4,
-    days:2,
-    showDayArrows:false,
-    callback:function(cal) {
-      $("#fecha_select").html("dia " + cal.dia);
-    }});
-</script>
-
+<script type="text/javascript" src="js/info_arbitral/tarjetas.js"></script>
 
 @endsection

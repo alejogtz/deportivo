@@ -24,8 +24,8 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('inicio');
 });
-Route::view('/calendario', 'calendario');
-
+Route::view('calendario', 'calendario');
+Route::get('tarjetas_por_dia/{fecha}','info_arbitral\partidos_controller@partidos_hoy');
 
 Route::get('testDBConnection', function(){
     try {

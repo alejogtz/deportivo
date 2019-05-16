@@ -52,7 +52,7 @@ jQuery.fn.calendarPicker = function(options) {
 
   calendar.changeDate = function(date) {
     calendar.currentDate = date;
-    calendar.dia=""+date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
+    calendar.dia=""+date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate();
 
     var llenaAños = function(date) {
       var year = date.getFullYear();
