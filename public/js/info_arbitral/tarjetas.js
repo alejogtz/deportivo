@@ -9,9 +9,7 @@ var calendarPicker2 = $("#dsel2").calendarPicker({
         cargar_tarjetas(cal);
     }});
 
-//var mensaje= document.getElementById("fecha_select").innerHTML
 function cargar_tarjetas(cal) {
-    $("#fecha_select").html("" + cal.dia);
     $.get('tarjetas_por_dia/'+cal.dia+'', function (data){
         if(data.length>0){
             var tarjetas = '<div class="form-row">';
@@ -22,18 +20,25 @@ function cargar_tarjetas(cal) {
               tarjetas+=' <div class="card-body">';
               tarjetas += ' <h5 class="card-title">'+data[i].equipo_local+' vs '+data[i].equipo_visitante+'</h5>';
               tarjetas+='<p class="card-text">Lugar: '+data[i].lugar+' Fecha: '+data[i].fecha+' Hora: '+data[i].hora+'</p>';
-              tarjetas+='<a href="#" class="btn btn-primary">Registrar Resultados</a>';
+              tarjetas+='<a href="resultados/'+data[i].id_partido+'" class="btn btn-primary">Registrar Resultados</a>';
               tarjetas+='</div></div></div>';
              }
              tarjetas+='</div>';
          $('#tarjetas').html(tarjetas);
         }else{
-            var tarjetas = '<h1>sin partidos</h1>';
+            var tarjetas ='<div >';
+            tarjetas += '<h1 >No hay Partidos Registrados</h1>';
+            tarjetas+='<img src="assets/img/balon_triste.jpg"  class="centrado">';
+            tarjetas+='</div>';
             $('#tarjetas').html(tarjetas);
         }
        
    });
   }
+
+  //cargar las ligas segun la base de datos
+  //funcion que se autoejecute 
+  //consulte en la base y escriba codigo en el div menu_ligas
   
     
     

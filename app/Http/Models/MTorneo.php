@@ -2,7 +2,7 @@
 namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class MJugador extends Model{
+class MTorneo extends Model{
     //nombre de la tabla
     protected $table = 'torneo';
 
@@ -15,7 +15,7 @@ class MJugador extends Model{
         'id_torneo',
         'nombre',
         'categoria',
-        'fecha_inaguracion',
+        'fecha_inaguracion', 
         'fecha_termino',
         'elimnado'
     ];

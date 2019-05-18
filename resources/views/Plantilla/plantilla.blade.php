@@ -15,7 +15,7 @@
 
   <!-- Custom styles for this template -->
   <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
-
+     @yield('cabeceras') 
 </head>
 
 <body>
@@ -32,13 +32,13 @@
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               registrar
             </button>
-            <div class="dropdown-menu">
+            <div id="menu_ligas" class="dropdown-menu">
               <a href="#" class="list-group-item list-group-item-action ">Torneo</a>
               <a href="#" class="list-group-item list-group-item-action ">Actualizar</a>
           <!-- Dropdown menu links -->
             </div>
           </div>
-        <a href="calendario" class="btn btn-primary">Informacion Arbitral</a>
+        <a href="torneos" class="btn btn-primary">Informacion Arbitral</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -56,7 +56,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>

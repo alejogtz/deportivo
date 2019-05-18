@@ -1,0 +1,10 @@
+.col-centrada{
+    float: none;
+    margin: 0 auto;
+}
+
+.centrado {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

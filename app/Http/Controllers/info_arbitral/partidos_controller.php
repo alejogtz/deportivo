@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\MPartido;
 use App\Http\Models\MEquipo;
+use App\Http\Models\MTorneo;
+
+
 class partidos_controller extends Controller
 {
-    public function partidos_hoy($fecha)
-    {
+    public function partidos_hoy($fecha){
        $Partidos = MPartido::select('*')
        ->where('fecha',$fecha)
        ->get();
@@ -23,6 +25,14 @@ class partidos_controller extends Controller
            // print "\n"."equipos".$valor;
        }
        return $Partidos;
+    }
+
+
+
+    public function getCategorias() {
+        $Torneos = MTorneo::select('*')->get();
+       // print "\n"."equipos".$Torneos;
+        return $Torneos;
     }
 
 
