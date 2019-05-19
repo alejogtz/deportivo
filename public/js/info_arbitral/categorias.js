@@ -3,8 +3,12 @@
          console.log(data);
          console.log(data.size);
     if(data.length>0){
+        console.log(data);
+        console.log(data.size);
          var tarjetas = '<div class="form-row">';
          for (var i = 0; i < data.length; i++){
+            console.log(i);
+            console.log(data.size);
          tarjetas+='<div class="col-md-4 mb-3">';
            tarjetas+='<div class="card" style="width: 18rem;">';
            tarjetas+='<img class="card-img-top" src="assets/img/cancha.png" alt="Card image cap">';

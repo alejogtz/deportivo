@@ -22,4 +22,5 @@
 
 <script type="text/javascript" src="js/info_arbitral/tarjetas.js"></script>
 
+
 @endsection
