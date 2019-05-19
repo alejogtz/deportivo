@@ -11,7 +11,6 @@ var calendarPicker2 = $("#dsel2").calendarPicker({
 
 function cargar_tarjetas(cal) {
     $.get('tarjetas_por_dia/'+cal.dia+'', function (data){
-        console.log(data);
         if(data.length>0){
             var tarjetas = '<div class="form-row">';
             for (var i = 0; i < data.length; i++){
@@ -36,7 +35,7 @@ function cargar_tarjetas(cal) {
             tarjetas+='</div>';
             $('#tarjetas').html(tarjetas);
         }
-       
+        
    });
   }
 
