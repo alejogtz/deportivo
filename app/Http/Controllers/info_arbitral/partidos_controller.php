@@ -14,7 +14,7 @@ class partidos_controller extends Controller
     public function partidos_hoy($fecha){
        $Partidos = MPartido::select('*')
        ->where('fecha',$fecha)
-       ->get();
+       ->get(); 
 
        foreach($Partidos as  $valor) {
             $Equipos1 = MEquipo::where('id_equipo','=',$valor->equipo_local)->first();
@@ -30,7 +30,7 @@ class partidos_controller extends Controller
 
 
     public function getCategorias() {
-        $Torneos = MTorneo::select('*')->get();
+        $Torneos = MTorneo::select('*')->where('elimnado',false)->get();
        // print "\n"."equipos".$Torneos;
         return $Torneos;
     }
