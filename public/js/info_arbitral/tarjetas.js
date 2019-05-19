@@ -7,7 +7,7 @@ var calendarPicker2 = $("#dsel2").calendarPicker({
     showDayArrows:false,
     callback:function(cal) {
         cargar_tarjetas(cal);
-    }});
+}});
 
 function cargar_tarjetas(cal) {
     $.get('tarjetas_por_dia/'+cal.dia+'', function (data){
@@ -40,6 +40,3 @@ function cargar_tarjetas(cal) {
   //funcion que se autoejecute 
   //consulte en la base y escriba codigo en el div menu_ligas
   
-    
-    
- 
