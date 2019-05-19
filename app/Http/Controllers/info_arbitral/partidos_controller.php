@@ -12,9 +12,9 @@ use App\Http\Models\MFase;
 
 class partidos_controller extends Controller
 {
-    public function partidos_hoy($fecha){
+    public function partidos_hoy($fecha,$fase){
        $Partidos = MPartido::select('*')
-       ->where('fecha',$fecha)
+       ->where('fecha',$fecha)->where('if_fase',$fase)
        ->get(); 
 
        foreach($Partidos as  $valor) {
@@ -38,8 +38,10 @@ class partidos_controller extends Controller
     public function fases_x_categoria($Torneo) {
         //$enviar = MFase::where('id_torneo',$Torneo)->get();
         return view('info_arbitral/fases')->with('torneo',$Torneo);
-    
     }
+
+  
+
 
     public function fases_categoria($Torneo) {
         $enviar = MFase::where('id_torneo',$Torneo)->get();

@@ -11,9 +11,10 @@ Route::get('/', function () {
 //aqui los de registro
 Route::view('torneos', 'info_arbitral/torneos');
 Route::view('calendario', 'info_arbitral/calendario');
-Route::get('cate_selecionada/{fecha}','info_arbitral\partidos_controller@fases_x_categoria');
+Route::get('cate_selecionada/{torneo}','info_arbitral\partidos_controller@fases_x_categoria');
 
-Route::get('tarjetas_por_dia/{fecha}','info_arbitral\partidos_controller@partidos_hoy');
+
+Route::get('tarjetas_por_dia/{fecha}&{fase}','info_arbitral\partidos_controller@partidos_hoy');
 Route::get('getCategorias','info_arbitral\partidos_controller@getCategorias');
 Route::get('getFases/{torneo}','info_arbitral\partidos_controller@fases_categoria');
 

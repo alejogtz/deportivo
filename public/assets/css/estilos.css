@@ -24,7 +24,7 @@
   text-align: center;
 	display:block;
 	position:absolute;
-	bottom:260px;
+	bottom:292px;
 	background:rgba(0,0,0,.3);
   width:100%;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -35,8 +35,8 @@
   text-align: center;
 	display:block;
 	position:absolute;
-	bottom:170px;
-	background:rgba(0,0,0,.3);
+	bottom:198px;
+	background:rgba(255, 255, 255, 0.2);
 	width:100%;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	font-size: 29px;
@@ -47,10 +47,15 @@
   text-align: center;
 	display:block;
 	position:absolute;
-	bottom:215px;
+	bottom:245px;
 	background:rgba(0,0,0,.3);
 	width:100%;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	font-size: 29px;
 	color:white;
+}
+
+.texto_c{
+	margin: 2px;
+	padding: 2px;
 }

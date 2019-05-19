@@ -10,7 +10,7 @@ var calendarPicker2 = $("#dsel2").calendarPicker({
 }});
 
 function cargar_tarjetas(cal) {
-    $.get('tarjetas_por_dia/'+cal.dia+'', function (data){
+    $.get('tarjetas_por_dia/'+cal.dia+'&1', function (data){
         if(data.length>0){
             var tarjetas = '<div class="form-row">';
             for (var i = 0; i < data.length; i++){
@@ -21,8 +21,9 @@ function cargar_tarjetas(cal) {
               tarjetas+='<div class="textosobreimgVS">VS</div>'
               tarjetas+='<div class="textosobreimgVisitante">'+data[i].equipo_visitante+'</div>'
               tarjetas+=' <div class="card-body">';
-              //tarjetas+= ' <h5 class="card-title">'+data[i].equipo_local+' vs '+data[i].equipo_visitante+'</h5>';
-              tarjetas+='<p class="card-text">Lugar: '+data[i].lugar+' Fecha: '+data[i].fecha+' Hora: '+data[i].hora+'</p>';
+              tarjetas+='<p class="texto_c">Lugar: '+data[i].lugar+'</p>';
+              tarjetas+='<p class="texto_c" >Fecha: '+data[i].fecha+'</p>';
+              tarjetas+='<p class="texto_c">Hora: '+data[i].hora+'</p>';
               tarjetas+='<a href="resultados/'+data[i].id_partido+'" class="btn btn-primary">Registrar Resultados</a>';
               tarjetas+='</div></div></div>';
              }

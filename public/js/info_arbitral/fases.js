@@ -16,7 +16,7 @@ var fases = (function(){
               tarjetas += ' <h5 class="card-title">'+data[i].nombre_fase+'</h5>';
               tarjetas+='<p class="card-text">Fecha inicio: '+data[i].fecha_inicio+ '</p>';
               tarjetas+='<p class="card-text">Fecha Termino: '+data[i].fecha_termin+ '</p>';
-              tarjetas+='<a href="fase_selecionada/'+data[i].id_fase+'" class="btn btn-primary">Seleccionar</a>';
+              tarjetas+='<a href="/fase_selecionada/'+data[i].id_fase+'" class="btn btn-primary">Seleccionar</a>';
               tarjetas+='</div></div></div>';
              }
              tarjetas+='</div>';
