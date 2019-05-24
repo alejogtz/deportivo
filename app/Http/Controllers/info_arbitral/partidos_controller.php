@@ -35,6 +35,12 @@ class partidos_controller extends Controller
         return $Torneos;
     }
 
+    /*Este metodo devuelve la vista del formulario para regstrar
+    los goles, los jugadores titulares y los jugadores suplentes*/
+    public function verRegistro()
+    {
+        return view("info_arbitral\goles");
+    }
 
 }
 ?>

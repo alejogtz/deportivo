@@ -15,6 +15,8 @@ Route::view('calendario', 'info_arbitral/calendario');
 Route::get('tarjetas_por_dia/{fecha}','info_arbitral\partidos_controller@partidos_hoy');
 Route::get('getCategorias','info_arbitral\partidos_controller@getCategorias');
 
+Route::get('registro','info_arbitral\partidos_controller@verRegistro');
+
 
 
 
