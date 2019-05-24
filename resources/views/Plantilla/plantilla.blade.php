@@ -38,7 +38,7 @@
           <!-- Dropdown menu links -->
             </div>
           </div>
-        <a href="torneos" class="btn btn-primary">Informacion Arbitral</a>
+        <a href="/torneos" class="btn btn-primary">Informacion Arbitral</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

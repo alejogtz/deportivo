@@ -7,19 +7,23 @@ var calendarPicker2 = $("#dsel2").calendarPicker({
     showDayArrows:false,
     callback:function(cal) {
         cargar_tarjetas(cal);
-    }});
+}});
 
 function cargar_tarjetas(cal) {
-    $.get('tarjetas_por_dia/'+cal.dia+'', function (data){
+    $.get('tarjetas_por_dia/'+cal.dia+'&1', function (data){
         if(data.length>0){
             var tarjetas = '<div class="form-row">';
             for (var i = 0; i < data.length; i++){
             tarjetas+='<div class="col-md-4 mb-3">';
               tarjetas+='<div class="card" style="width: 18rem;">';
               tarjetas+='<img class="card-img-top" src="assets/img/cancha.png" alt="Card image cap">';
+              tarjetas+='<div class="textosobreimgLocal">'+data[i].equipo_local+'</div>'
+              tarjetas+='<div class="textosobreimgVS">VS</div>'
+              tarjetas+='<div class="textosobreimgVisitante">'+data[i].equipo_visitante+'</div>'
               tarjetas+=' <div class="card-body">';
-              tarjetas += ' <h5 class="card-title">'+data[i].equipo_local+' vs '+data[i].equipo_visitante+'</h5>';
-              tarjetas+='<p class="card-text">Lugar: '+data[i].lugar+' Fecha: '+data[i].fecha+' Hora: '+data[i].hora+'</p>';
+              tarjetas+='<p class="texto_c">Lugar: '+data[i].lugar+'</p>';
+              tarjetas+='<p class="texto_c" >Fecha: '+data[i].fecha+'</p>';
+              tarjetas+='<p class="texto_c">Hora: '+data[i].hora+'</p>';
               tarjetas+='<a href="resultados/'+data[i].id_partido+'" class="btn btn-primary">Registrar Resultados</a>';
               tarjetas+='</div></div></div>';
              }
@@ -32,7 +36,7 @@ function cargar_tarjetas(cal) {
             tarjetas+='</div>';
             $('#tarjetas').html(tarjetas);
         }
-       
+        
    });
   }
 
@@ -40,6 +44,3 @@ function cargar_tarjetas(cal) {
   //funcion que se autoejecute 
   //consulte en la base y escriba codigo en el div menu_ligas
   
-    
-    
- 

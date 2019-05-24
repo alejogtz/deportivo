@@ -7,14 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\MPartido;
 use App\Http\Models\MEquipo;
 use App\Http\Models\MTorneo;
+use App\Http\Models\MFase;
 
 
 class partidos_controller extends Controller
 {
-    public function partidos_hoy($fecha){
+    public function partidos_hoy($fecha,$fase){
        $Partidos = MPartido::select('*')
-       ->where('fecha',$fecha)
-       ->get();
+       ->where('fecha',$fecha)->where('if_fase',$fase)
+       ->get(); 
 
        foreach($Partidos as  $valor) {
             $Equipos1 = MEquipo::where('id_equipo','=',$valor->equipo_local)->first();
@@ -28,9 +29,8 @@ class partidos_controller extends Controller
     }
 
 
-
     public function getCategorias() {
-        $Torneos = MTorneo::select('*')->get();
+        $Torneos = MTorneo::select('*')->where('elimnado',false)->get();
        // print "\n"."equipos".$Torneos;
         return $Torneos;
     }
