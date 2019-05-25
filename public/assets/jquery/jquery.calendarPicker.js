@@ -23,15 +23,16 @@ jQuery.fn.calendarPicker = function(options) {
     options.callbackDelay=500;
   
   if (typeof(options.monthNames) == "undefined")
-    options.monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    options.monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
   if (typeof(options.dayNames) == "undefined")
-    options.dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    options.dayNames =  ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
 
   // --------------------------  end default option values --------------------------
 
-  var calendar = {currentDate: options.date};
+  var calendar = {currentDate: options.date,
+                  dia:'hoy' };
   calendar.options = options;
 
   //build the calendar on the first element in the set of matched elements.
@@ -51,8 +52,9 @@ jQuery.fn.calendarPicker = function(options) {
 
   calendar.changeDate = function(date) {
     calendar.currentDate = date;
+    calendar.dia=""+date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate();
 
-    var fillYears = function(date) {
+    var llenaAños = function(date) {
       var year = date.getFullYear();
       var t = new Date();
       divYears.empty();
@@ -70,7 +72,7 @@ jQuery.fn.calendarPicker = function(options) {
       }
     }
 
-    var fillMonths = function(date) {
+    var llenaMeses = function(date) {
       var month = date.getMonth();
       var t = new Date();
       divMonths.empty();
@@ -96,7 +98,7 @@ jQuery.fn.calendarPicker = function(options) {
       }
     }
 
-    var fillDays = function(date) {
+    var llenaDias = function(date) {
       var day = date.getDate();
       var t = new Date();
       divDays.empty();
@@ -134,9 +136,10 @@ jQuery.fn.calendarPicker = function(options) {
     }
 
 
-    fillYears(date);
-    fillMonths(date);
-    fillDays(date);
+
+    llenaAños(date);
+    llenaMeses(date);
+    llenaDias(date);
 
     deferredCallBack();
 

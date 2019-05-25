@@ -1,25 +1,26 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-
 Route::get('/', function () {
     return view('inicio');
 });
 
+///aqui los de fixture
+
+
+
+//aqui los de registro
+Route::view('torneos', 'info_arbitral/torneos');
+Route::view('calendario', 'info_arbitral/calendario');
+Route::get('cate_selecionada/{torneo}','info_arbitral\partidos_controller@fases_x_categoria');
+
+
+Route::get('registro','info_arbitral\partidos_controller@verRegistro');
+
+
+
+
+
+//para probar la conexion 
 Route::get('testDBConnection', function(){
     try {
         DB::connection()->getPdo();
