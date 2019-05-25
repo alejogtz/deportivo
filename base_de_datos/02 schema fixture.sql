@@ -63,7 +63,8 @@ create table torneo(
 create table partido(
 	id_partido SERIAL primary key,
 	id_torneo int references torneo(id_torneo),
-	tipo_fase varchar(50),
+	tipo_fase varchar(50),  -- Regular|Octavos|Cuartos|Semifinales|Finales
+	numero_fase int, 		-- 1|2|3|4|5|6|7|8|9 y si es clasificatoria será null
 	lugar varchar(30),
 	hora time,
 	fecha date,
