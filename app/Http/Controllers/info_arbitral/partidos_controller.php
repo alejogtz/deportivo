@@ -27,7 +27,11 @@ class partidos_controller extends Controller
        }
        return $Partidos;
     }
-
+    public function fases_x_categoria($Torneo) {
+        //$enviar = MFase::where('id_torneo',$Torneo)->get();
+        return view('info_arbitral/fases')->with('torneo',$Torneo);
+    
+    }
 
     public function getCategorias() {
         $Torneos = MTorneo::select('*')->where('elimnado',false)->get();
