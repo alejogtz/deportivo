@@ -13,10 +13,8 @@ var fases = (function(){
               tarjetas+='<div class="card" style="width: 15rem;">';
               tarjetas+='<img class="card-img-top" src="/assets/img/cancha2.png" alt="Card image cap">';
               tarjetas+=' <div class="card-body">';
-              tarjetas += ' <h5 class="card-title">'+data[i].nombre_fase+'</h5>';
-              tarjetas+='<p class="card-text">Fecha inicio: '+data[i].fecha_inicio+ '</p>';
-              tarjetas+='<p class="card-text">Fecha Termino: '+data[i].fecha_termin+ '</p>';
-              tarjetas+='<a href="/fase_selecionada/'+data[i].id_fase+'" class="btn btn-primary">Seleccionar</a>';
+              tarjetas += ' <h5 class="card-title">'+data[i].tipo_fase+'</h5>';
+              tarjetas+='<a href="/fase_selecionada/'+data[i].tipo_fase+'" class="btn btn-primary">Seleccionar</a>';
               tarjetas+='</div></div></div>';
              }
              tarjetas+='</div>';
