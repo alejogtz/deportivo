@@ -62,6 +62,7 @@ create table torneo(
 
 create table partido(
 	id_partido SERIAL primary key,
+	id_torneo int references torneo(id_torneo),
 	tipo_fase varchar(50),
 	lugar varchar(30),
 	hora time,
