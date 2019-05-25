@@ -11,9 +11,5 @@ class MJugador extends Model{
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
-    protected $filltable = ['id_jugador','id_equipo','nombre','apellido_p','apelldo_m','no_playera','estatura','posicion','fecha_nac','foto','eliminado'];
-
-    public function equipo(){
-        return $this->belongsTo('MEquipo');
-    }
+    protected $filltable = ['id_jugador','nombre','apellido_p','apelldo_m','no_playera','estatura','posicion','fecha_nac','foto','eliminado'];
 }

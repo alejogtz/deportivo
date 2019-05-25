@@ -12,7 +12,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }} " rel="stylesheet">
-
+  
   <!-- Custom styles for this template -->
   <link href="{{ asset('assets/css/simple-sidebar.css') }}" rel="stylesheet">
 

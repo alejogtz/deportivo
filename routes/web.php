@@ -29,3 +29,15 @@ Route::get('testDBConnection', function(){
     }
     //phpinfo();
 });
+
+
+
+
+
+Route::get('equipo/registro',function () {
+    return view('registroequipo');
+});
+
+Route::get('director',function () {
+    return view('director');
+});

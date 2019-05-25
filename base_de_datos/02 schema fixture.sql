@@ -1,4 +1,5 @@
-﻿--drop table gol;
+﻿
+--drop table gol;
 --drop table tarjeta;
 --drop table cambio;
 --drop table partido;
@@ -33,7 +34,6 @@ create table equipo(
 
 create table jugador(
 	id_jugador SERIAL primary key,
-	id_equipo int references equipo (id_equipo),
 	nombre varchar (50),
 	apellido_p varchar(30),
 	apellido_m varchar (30),
@@ -43,6 +43,12 @@ create table jugador(
 	fecha_nac date,
 	foto text,
 	elimnado boolean default false
+);
+
+
+create table jugador_equipo(
+	id_equipo int references equipo (id_equipo),
+	id_jugador int references jugador(id_jugador)
 );
 
 create table torneo(
