@@ -60,18 +60,11 @@ create table torneo(
 	elimnado boolean default false
 );
 
-create table fase(
-	id_fase SERIAL primary key,
-	id_torneo int references torneo (id_torneo),
-	nombre_fase varchar(30),
-	fecha_inicio date,
-	fecha_termin date,
-	elimnado boolean default false
-);
 
 create table partido(
 	id_partido SERIAL primary key,
-	if_fase int references fase(id_fase),
+	id_fixture int REFERENCES fixture(id_fixture),
+	tipo_fase varchar(50),
 	lugar varchar(30),
 	hora time,
 	fecha date,
@@ -109,7 +102,22 @@ create table cambio (
 	elimnado boolean default false
 );
 
-create table tabla_general(
+create TABLE fixture(
+	id_fixture SERIAL primary key
+
+);
+
+create table usuario(
+	id_usuario serial primary key,
+	nombre varchar(100),
+	contrasenia varchar(100),
+	correo varchar(100),
+	tipo varchar(20),
+	elimnado boolean default false
+);
+
+--vista tabla general
+/*create table tabla_general(
 	id_torneo int references torneo(id_torneo),
 	nombre_equipo varchar(50),
 	juegos_jugados int,
@@ -121,19 +129,23 @@ create table tabla_general(
 	puntos int,
 	elimnado boolean default false
 );
-
+--vista tabla clasificatoria
 create table tabla_clasificatoria(
-	id_torneo int references torneo(id_torneo),
+	id_partido int references partido(id_partido),
 	ronda varchar (20),
 	id_equipo int CHECK (id_equipo>0),
 	elimnado boolean default false
-);
+);*/
 
-create table usuario(
-	id_usuario serial primary key,
-	nombre varchar(100),
-	contrasenia varchar(100),
-	correo varchar(100),
-	tipo varchar(20),
+
+/*
+--YA NO ESTÁ EN EL E-R
+create table fase(
+	id_fase SERIAL primary key,
+	id_torneo int references torneo (id_torneo),
+	nombre_fase varchar(30),
+	fecha_inicio date,
+	fecha_termin date,
 	elimnado boolean default false
 );
+*/
