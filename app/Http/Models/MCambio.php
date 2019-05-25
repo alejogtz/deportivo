@@ -11,7 +11,14 @@ class MCambio extends Model{
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
-    protected $filltable = ['id_partido','id_equipo','jugador_entra','jugador_sale','minuto','eliminado'];
+    protected $filltable = [
+        'id_partido',
+        'id_equipo',
+        'jugador_entra',
+        'jugador_sale',
+        'minuto',
+        'eliminado'
+    ];
 
     public function partido(){
         return $this->belongsTo('MPartido');

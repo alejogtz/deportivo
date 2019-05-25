@@ -11,5 +11,16 @@ class MJugadorEquipo extends Model{
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
-    protected $filltable = ['id_equipo','id_jugador'];
+    protected $filltable = [
+        'id_equipo',
+        'id_jugador'
+    ];
+
+    public function equipo(){
+        return $this->belongsTo('MEquipo');
+    }
+
+    public function jugador(){
+        return $this->belongsTo('MJugador');
+    }
 }

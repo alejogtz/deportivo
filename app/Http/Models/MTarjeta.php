@@ -11,7 +11,14 @@ class MTarjeta extends Model{
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
-    protected $filltable = ['id_partido','id_jugador','minuto','id_equipo','tipo','eliminado'];
+    protected $filltable = [
+        'id_partido',
+        'id_jugador',
+        'minuto',
+        'id_equipo',
+        'tipo',
+        'eliminado'
+    ];
 
     public function partido(){
         return $this->belongsTo('MPartido');
