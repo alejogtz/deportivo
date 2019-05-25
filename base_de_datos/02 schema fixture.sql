@@ -70,7 +70,8 @@ create table partido(
 	fecha date,
 	equipo_local int references equipo(id_equipo),
 	equipo_visitante int references equipo(id_equipo),
-	estatus_partido boolean,
+	estatus_partido boolean, --- 0 = No Jugado;	1 = Jugado
+	ganador	varchar(9), 	  ---- Local | Visitante
 	elimnado boolean default false
 );
 
