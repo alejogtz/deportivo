@@ -42,5 +42,5 @@ Route::get('equipo/registro',function () {
 });
 
 Route::get('director',function () {
-    return view('director');
+    return view('fixture/director');
 });
