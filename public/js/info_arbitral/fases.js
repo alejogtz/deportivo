@@ -3,7 +3,7 @@ var fases = (function(){
     
     var _sercuperaElemento = () => {
         var cosa = document.getElementById("torneo");
-        var contenido= cosa.innerHTML;
+        var contenido= cosa.value;
         console.log(contenido);
         $.get('/getFases/'+contenido+'', function (data){
        if(data.length>0){

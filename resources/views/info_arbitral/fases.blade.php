@@ -5,8 +5,10 @@
 @endsection
 
 @section('content')
+<h2>TORNERO {{$torneo->nombre}}</h2>
+<h2> CATEGORIA {{$torneo->categoria}}</h2>
 <h2>Selecciona una Fase</h2>
-<p id="torneo"> {{$torneo}}</p>
+<input type="hidden" id="torneo" value="{{$torneo->id_torneo}}"/>
 <div id="categorias"></div>
 
 
