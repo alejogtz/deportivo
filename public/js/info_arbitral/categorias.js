@@ -11,7 +11,12 @@ var categori = (function(){
               tarjetas+='<img class="card-img-top" src="assets/img/cancha2.png" alt="Card image cap">';
               tarjetas+=' <div class="card-body">';
               tarjetas += ' <h5 class="card-title">'+data[i].nombre+'</h5>';
-              tarjetas+='<p class="card-text">Categoria: '+data[i].categoria+' Fecha Inauguracion: '+data[i].fecha_inaguracion+' Fecha Termino: '+data[i].fecha_termino+'</p>';
+              tarjetas+='<p class="texto_tarjetas">Categoria:</p>';
+              tarjetas+='<p class="texto_tarjetas">'+data[i].categoria+'</p>';
+              tarjetas+='<p class="texto_tarjetas" >Fecha Inauguracion: </p>';
+              tarjetas+='<p class="texto_tarjetas">'+data[i].fecha_inaguracion+'</p>';
+              tarjetas+='<p class="texto_tarjetas">Fecha Termino:</p>';
+              tarjetas+='<p class="texto_tarjetas">'+data[i].fecha_termino+'</p>';
               tarjetas+='<a href="cate_selecionada/'+data[i].id_torneo+'" class="btn btn-primary">Seleccionar</a>';
               tarjetas+='</div></div>';
               tarjetas+='</div>';

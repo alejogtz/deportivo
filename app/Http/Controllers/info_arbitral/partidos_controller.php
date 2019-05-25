@@ -45,6 +45,9 @@ class partidos_controller extends Controller
     {
         return view("info_arbitral\goles");
     }
-
+    public function fases_categoria($Torneo) {
+        $enviar = MFase::where('id_torneo',$Torneo)->get();
+        return $enviar;
+    }
 }
 ?>
