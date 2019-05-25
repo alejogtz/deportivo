@@ -1,16 +1,15 @@
-﻿
---drop table gol;
---drop table tarjeta;
---drop table cambio;
---drop table partido;
---drop table fase;
---drop table tabla_general;
---drop table tabla_clasificatoria;
---drop table usuario;
---drop table torneo;
---drop table jugador;
---drop table equipo;
---drop table directort;
+﻿/*
+drop table gol;
+drop table tarjeta;
+drop table cambio;
+drop table partido;
+drop table usuario;
+drop table torneo;
+drop table jugador_equipo;
+drop table jugador;
+drop table equipo;
+drop table directort;
+*/
 
 
 set datestyle to sql,dmy;
@@ -63,7 +62,6 @@ create table torneo(
 
 create table partido(
 	id_partido SERIAL primary key,
-	id_fixture int REFERENCES fixture(id_fixture),
 	tipo_fase varchar(50),
 	lugar varchar(30),
 	hora time,
@@ -102,10 +100,6 @@ create table cambio (
 	elimnado boolean default false
 );
 
-create TABLE fixture(
-	id_fixture SERIAL primary key
-
-);
 
 create table usuario(
 	id_usuario serial primary key,
