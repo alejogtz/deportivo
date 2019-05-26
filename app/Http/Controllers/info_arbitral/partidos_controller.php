@@ -57,5 +57,17 @@ class partidos_controller extends Controller
         return view('info_arbitral/calendario')->with('torneo',$enviar);
     
     }
+
+
+    public function verRegistro2($partido)
+    {
+        $Partido = MPartido::where('id_partido',$partido)
+        ->take(1)->first();
+        print "\n"."   fecha  ".$Partido->fecha;
+        print "\n"."   lugar  ".$Partido->lugar;
+        print "\n"."   equipo1  ".$Partido->equipo_local;
+        print "\n"."   equipo2  ".$Partido->equipo_visitante;
+        //return view("info_arbitral\goles");
+    }
 }
 ?>

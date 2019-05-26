@@ -28,7 +28,7 @@ function cargar_tarjetas(cal) {
               tarjetas+='<p class="texto_c">Lugar: '+data[i].lugar+'</p>';
               tarjetas+='<p class="texto_c" >Fecha: '+data[i].fecha+'</p>';
               tarjetas+='<p class="texto_c">Hora: '+data[i].hora+'</p>';
-              tarjetas+='<a href="resultados/'+data[i].id_partido+'" class="btn btn-primary">Registrar Resultados</a>';
+              tarjetas+='<a href="/registro2/'+data[i].id_partido+'" class="btn btn-primary">Registrar Resultados</a>';
               tarjetas+='</div></div></div>';
              }
              tarjetas+='</div>';
