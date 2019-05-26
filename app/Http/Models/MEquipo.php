@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class MEquipo extends Model{
     //nombre de la tabla
     protected $table = 'equipo';
-
+ 
     //llave primaria
     protected $primarykey = 'id_equipo';
     public $timestamps = false;

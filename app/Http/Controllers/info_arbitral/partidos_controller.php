@@ -9,6 +9,7 @@ use App\Http\Models\MEquipo;
 use App\Http\Models\MTorneo;
 use App\Http\Models\MJugador;
 use App\Http\Models\MFase;
+use App\Http\Models\MJugadorEquipo;
 
 
 class partidos_controller extends Controller
@@ -70,5 +71,16 @@ class partidos_controller extends Controller
         print "\n"."   equipo2  ".$Partido->equipo_visitante;
         //return view("info_arbitral\goles");
     }
+
+    public function jugadores_equipo($equipo){
+      $users = MJugadorEquipo::select('*')
+            ->join('equipo', 'jugador_equipo.id_equipo', '=', 'equipo.id_equipo')
+            ->join('jugador', 'jugador_equipo.id_jugador', '=', 'jugador.id_jugador')
+            ->select('*')
+            ->get();
+     }
+
+
+
 }
 ?>

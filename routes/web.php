@@ -22,6 +22,10 @@ Route::get('getFases/{torneo}','info_arbitral\partidos_controller@fases_categori
 Route::get('fase_seleccionada/{jornada}&{torneo}','info_arbitral\partidos_controller@calendario_x_fase');
 Route::get('registro2/{partido}','info_arbitral\partidos_controller@verRegistro2');
 
+Route::get('jugadores/{equipo}','info_arbitral\partidos_controller@jugadores_equipo');
+
+
+
 //para probar la conexion 
 Route::get('testDBConnection', function(){
     try {
