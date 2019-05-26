@@ -16,7 +16,7 @@ class MDirectorT extends Model{
         'nombre',
         'apellido_p',
         'apellido_m',
-        'eliminado'
+        'elimnado'
     ];
 
     public function equipos(){

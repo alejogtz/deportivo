@@ -41,7 +41,8 @@ Route::get('equipo/registro',function () {
     return view('registroequipo');
 });
 
-Route::post('director/editbyid','fixture\DirectorController@editbyid');
-Route::put('director/editbyid2','fixture\DirectorController@editbyid2');
+Route::post('director/agregar','fixture\DirectorController@agregar');
+Route::put('director/editbyid','fixture\DirectorController@editbyid');
+Route::put('director/eliminar','fixture\DirectorController@eliminar');
 Route::get('director/registros','fixture\DirectorController@getTableDirector');
 Route::get('director/all','fixture\DirectorController@list');
