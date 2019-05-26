@@ -15,7 +15,11 @@ Route::get('cate_selecionada/{id}','info_arbitral\partidos_controller@fases_x_ca
  
 
 Route::get('registro','info_arbitral\partidos_controller@verRegistro');//muestra la vista para registro de resultados
-
+Route::get('registro','info_arbitral\partidos_controller@verRegistro');
+Route::get('tarjetas_por_dia/{fecha}&{fase}&{torneo}','info_arbitral\partidos_controller@partidos_hoy');
+Route::get('getCategorias','info_arbitral\partidos_controller@getCategorias');
+Route::get('getFases/{torneo}','info_arbitral\partidos_controller@fases_categoria');
+Route::get('fase_seleccionada/{jornada}&{torneo}','info_arbitral\partidos_controller@calendario_x_fase');
 Route::get('registro2/{partido}','info_arbitral\partidos_controller@verRegistro2');
 
 //para probar la conexion 
