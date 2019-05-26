@@ -11,7 +11,7 @@
 
 @section('content')
         
-<input type="hidden" id="torneo" value="{{$torneo->id_torneo}}"/>
+<input type="hidden" id="torneo" value="{{ $torneo->id_torneo"/> }}
 <input type="hidden" id="fase" value="{{$torneo->tipo_fase}}"/>
 <h2>Selecciona una fecha por favor</h2>
 <div id="calendario">
