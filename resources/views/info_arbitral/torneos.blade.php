@@ -18,5 +18,5 @@ $( document ).ready(function() {
     categori.obtenercategorias();
 });
 </script>
-
+ 
 @endsection
