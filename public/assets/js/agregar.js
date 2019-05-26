@@ -21,6 +21,19 @@ function eliminaelemento(){
 function agoleslocal(){
     var agolesl = $('#plantillagoles').html();
     $('#goleslocal').append(agolesl);
+    
+    var elocal = document.getElementById("idlocal").value;
+    console.log(elocal);
+    $.get('registro2/'+elocal+'',function(data){
+        
+        var lista = '<option value=""> Seleccione Jugador </option>';
+        
+        for (var i = 0; i < data.length; i++)
+          lista += '<option value="'+data[i].id_jugador+'">'+data[i].nombre+'</option>'
+
+          
+          $('#goljugador').html(lista);
+    });
 }
 function agolesvisitante(){
     var agolesl = $('#plantillagoles').html();
