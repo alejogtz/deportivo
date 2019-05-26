@@ -12,9 +12,9 @@ use App\Http\Models\MFase;
 
 class partidos_controller extends Controller
 {
-    public function partidos_hoy($fecha,$fase){
+    public function partidos_hoy($fecha,$fase,$torneo){
        $Partidos = MPartido::select('*')
-       ->where('fecha',$fecha)->where('if_fase',$fase)
+       ->where('fecha',$fecha)->where('tipo_fase',$fase)->where('id_torneo',$torneo)
        ->get(); 
 
        foreach($Partidos as  $valor) {
@@ -27,16 +27,15 @@ class partidos_controller extends Controller
        }
        return $Partidos;
     }
-    public function fases_x_categoria($Torneo) {
-        $enviar = MTorneo::where('id_torneo',$Torneo)->take(1)->first();
-        
+    public function fases_x_categoria($id) {
+       //print "\n".$id;
+        $enviar = MTorneo::where('id_torneo',$id)->take(1)->first();
         return view('info_arbitral/fases')->with('torneo',$enviar);
     
     }
 
     public function getCategorias() {
         $Torneos = MTorneo::select('*')->where('elimnado',false)->get();
-       // print "\n"."equipos".$Torneos;
         return $Torneos;
     }
 
@@ -46,9 +45,17 @@ class partidos_controller extends Controller
     {
         return view("info_arbitral\goles");
     }
+
     public function fases_categoria($Torneo) {
         $enviar = MPartido::select('tipo_fase')->where('id_torneo',$Torneo)->groupBy('tipo_fase')->get();
         return $enviar;
+    }
+
+    public function calendario_x_fase($fase,$torneo) {
+        $enviar = MPartido::where('tipo_fase',$fase)->where('id_torneo',$torneo)->take(1)->first();
+        //print "\n".$enviar;
+        return view('info_arbitral/calendario')->with('torneo',$enviar);
+    
     }
 }
 ?>

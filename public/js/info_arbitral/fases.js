@@ -3,8 +3,7 @@ var fases = (function(){
     
     var _sercuperaElemento = () => {
         var cosa = document.getElementById("torneo");
-        var contenido= cosa.value;
-        console.log(contenido);
+        var contenido=cosa.value;
         $.get('/getFases/'+contenido+'', function (data){
        if(data.length>0){
             var tarjetas = '<div class="form-row">';
@@ -14,7 +13,7 @@ var fases = (function(){
               tarjetas+='<img class="card-img-top" src="/assets/img/cancha2.png" alt="Card image cap">';
               tarjetas+=' <div class="card-body">';
               tarjetas += ' <h5 class="card-title">'+data[i].tipo_fase+'</h5>';
-              tarjetas+='<a href="/fase_selecionada/'+data[i].tipo_fase+'" class="btn btn-primary">Seleccionar</a>';
+              tarjetas+='<a href="/fase_seleccionada/'+data[i].tipo_fase+'&'+contenido+'" class="btn btn-primary">Seleccionar</a>';
               tarjetas+='</div></div></div>';
              }
              tarjetas+='</div>';

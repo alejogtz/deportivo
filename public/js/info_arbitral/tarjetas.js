@@ -10,13 +10,17 @@ var calendarPicker2 = $("#dsel2").calendarPicker({
 }});
 
 function cargar_tarjetas(cal) {
-    $.get('tarjetas_por_dia/'+cal.dia+'&1', function (data){
+    var h1 = document.getElementById("fase");
+    var fase=h1.value;
+    var h2 = document.getElementById("torneo");
+    var torneo=h2.value;
+    $.get('/tarjetas_por_dia/'+cal.dia+'&'+fase+'&'+torneo, function (data){
         if(data.length>0){
             var tarjetas = '<div class="form-row">';
             for (var i = 0; i < data.length; i++){
             tarjetas+='<div class="col-md-4 mb-3">';
               tarjetas+='<div class="card" style="width: 18rem;">';
-              tarjetas+='<img class="card-img-top" src="assets/img/cancha.png" alt="Card image cap">';
+              tarjetas+='<img class="card-img-top" src="/assets/img/cancha.png" alt="Card image cap">';
               tarjetas+='<div class="textosobreimgLocal">'+data[i].equipo_local+'</div>'
               tarjetas+='<div class="textosobreimgVS">VS</div>'
               tarjetas+='<div class="textosobreimgVisitante">'+data[i].equipo_visitante+'</div>'
@@ -32,7 +36,7 @@ function cargar_tarjetas(cal) {
         }else{
             var tarjetas ='<div >';
             tarjetas += '<h1 >No hay Partidos Registrados</h1>';
-            tarjetas+='<img src="assets/img/balon_triste.jpg"  class="centrado">';
+            tarjetas+='<img src="/assets/img/balon_triste.jpg"  class="centrado">';
             tarjetas+='</div>';
             $('#tarjetas').html(tarjetas);
         }
