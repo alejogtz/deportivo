@@ -39,6 +39,7 @@
             </div>
           </div>
         <a href="/torneos" class="btn btn-primary">Informacion Arbitral</a>
+        <a href="/tabla_general" class="btn btn-success">Tabla General</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

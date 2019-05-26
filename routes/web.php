@@ -24,7 +24,7 @@ Route::get('registro2/{partido}','info_arbitral\partidos_controller@verRegistro2
 
 Route::get('jugadores/{equipo}','info_arbitral\partidos_controller@jugadores_equipo');
 
-
+Route::get('tabla_general', 'info_arbitral\tabla_general@tabla_general');
 
 //para probar la conexion 
 Route::get('testDBConnection', function(){
