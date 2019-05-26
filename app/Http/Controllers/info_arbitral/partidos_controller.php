@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\MPartido;
 use App\Http\Models\MEquipo;
 use App\Http\Models\MTorneo;
+use App\Http\Models\MJugador;
 use App\Http\Models\MFase;
 
 
@@ -35,7 +36,7 @@ class partidos_controller extends Controller
         return $Torneos;
     }
 
-    /*Este metodo devuelve la vista del formulario para regstrar
+    /*Este metodo devuelve la vista del formulario para registrar
     los goles, los jugadores titulares y los jugadores suplentes*/
     public function verRegistro()
     {

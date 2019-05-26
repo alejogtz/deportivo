@@ -14,7 +14,7 @@ Route::view('calendario', 'info_arbitral/calendario');
 Route::get('cate_selecionada/{torneo}','info_arbitral\partidos_controller@fases_x_categoria');
 
 
-Route::get('registro','info_arbitral\partidos_controller@verRegistro');
+Route::get('registro','info_arbitral\partidos_controller@verRegistro');//muestra la vista para registro de resultados
 
 
 
