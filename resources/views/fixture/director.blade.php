@@ -1,12 +1,11 @@
 @extends('plantilla.plantilla')
 @section('content')
-<link href="{{ asset('assets/css/director.css') }} " rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <div class="m-3">
     <div class="table-title">
         <div class="row">
             <div class="col-md-6 mb-3">
-                <h2>Manage <b>Employees</b></h2>
+                <h2>Administrar <b>Directores</b></h2>
             </div>
             <div class="col-md-6 mb-3">
                 <a href="#addEmployeeModal" class="btn btn-success float-right d-flex" data-toggle="modal">
@@ -20,21 +19,28 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Accion</th>
+                    <th scope="col">Identificador</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido Paterno</th>
+                    <th scope="col">Apellido Materno</th>
+                    <th scope="col">Eliminado por bandera</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($dis as $d)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{ $d->id_director }}</th>
+                    <td>{{ $d->nombre }}</td>
+                    <td>{{ $d->apellido_p }}</td>
+                    <td>{{ $d->apellido_m }}</td>
+                    @if( $d->eliminado )
+                        <td>SI</td>
+                    @else
+                        <td>NO</td>
+                    @endif
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                        <a onclick = "editDirector({{ $d }})" href="#editDirectorModal" class="edit" data-toggle="modal">
                             <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                         </a>
                         <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
@@ -42,40 +48,14 @@
                         </a>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                        </a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                        </a>
-                    </td>
-                </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                        </a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                        </a>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 
 
 
-    <!-- Edit Modal HTML -->
+    <!-- Add Modal HTML -->
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -133,36 +113,39 @@
         </div>
     </div>
 
-    <!-- ediit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <!-- Edir Modal HTML -->
+    <div id="editDirectorModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form id=form_edit method="POST" autocomplete="off" action="editbyid">
                     <div class="modal-header">						
-                        <h4 class="modal-title">Edit Employee</h4>
+                        <h4 class="modal-title">Editar Director</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
+                             <input id="id_director" type="hidden" class="form-control" required>
+                            <label>Nombre</label>
+                            <input id="nombre" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" required>
+                            <label>Apellido Paterno</label>
+                            <input id="apellido_p" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
+                            <label>Apellido Materno</label>
+                            <input id="apellido_m" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
+                            <label>Eliminado por bandera</label>
+                            <select id="eliminado" class="form-control">
+                                
+                            </select>
                         </div>					
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info" value="Save">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-info" value="Guardar">
                     </div>
                 </form>
             </div>
@@ -170,5 +153,5 @@
     </div>
 
 </div>
-
+<script src="{{ asset('assets/js/fixture/crud_script.js') }}"></script>
 @endsection
