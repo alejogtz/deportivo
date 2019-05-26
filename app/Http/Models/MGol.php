@@ -11,7 +11,15 @@ class MGol extends Model{
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
-    protected $filltable = ['id_partido','id_jugador','minuto','equipo_en_contra','equipo_en_favor_de','tipo_anotacion','eliminado'];
+    protected $filltable = [
+        'id_partido',
+        'id_jugador',
+        'minuto',
+        'equipo_en_contra',
+        'equipo_en_favor_de',
+        'tipo_anotacion',
+        'eliminado'
+    ];
 
     public function partido(){
         return $this->belongsTo('MPartido');

@@ -11,7 +11,14 @@ class MEquipo extends Model{
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
-    protected $filltable = ['id_equipo','id_director','nombre','fecha_inscripcion','lugar_procedencia','elimnado'];
+    protected $filltable = [
+        'id_equipo',
+        'id_director',
+        'nombre',
+        'fecha_inscripcion',
+        'lugar_procedencia',
+        'elimnado'
+    ];
 
     public function directorT(){
         return $this->belongsTo('MDirectorT');

@@ -20,6 +20,7 @@ class ComposerStaticInitc1d9fac6873d71fb21a384127e8f6b2c
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -118,6 +119,7 @@ class ComposerStaticInitc1d9fac6873d71fb21a384127e8f6b2c
         'C' => 
         array (
             'Cron\\' => 5,
+            'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -313,6 +315,10 @@ class ComposerStaticInitc1d9fac6873d71fb21a384127e8f6b2c
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -368,6 +374,8 @@ class ComposerStaticInitc1d9fac6873d71fb21a384127e8f6b2c
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\fixture\\DirectorController' => __DIR__ . '/../..' . '/app/Http/Controllers/fixture/DirectorController.php',
+        'App\\Http\\Controllers\\info_arbitral\\partidos_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/info_arbitral/partidos_controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -376,6 +384,17 @@ class ComposerStaticInitc1d9fac6873d71fb21a384127e8f6b2c
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Models\\MCambio' => __DIR__ . '/../..' . '/app/Http/Models/MCambio.php',
+        'App\\Http\\Models\\MDirectorT' => __DIR__ . '/../..' . '/app/Http/Models/MDirectorT.php',
+        'App\\Http\\Models\\MEquipo' => __DIR__ . '/../..' . '/app/Http/Models/MEquipo.php',
+        'App\\Http\\Models\\MGol' => __DIR__ . '/../..' . '/app/Http/Models/MGol.php',
+        'App\\Http\\Models\\MJugador' => __DIR__ . '/../..' . '/app/Http/Models/MJugador.php',
+        'App\\Http\\Models\\MJugadorEquipo' => __DIR__ . '/../..' . '/app/Http/Models/MJugadorEquipo.php',
+        'App\\Http\\Models\\MPartido' => __DIR__ . '/../..' . '/app/Http/Models/MPartido.php',
+        'App\\Http\\Models\\MTablaClasificatoria' => __DIR__ . '/../..' . '/app/Http/Models/MTablaClasificatoria.php',
+        'App\\Http\\Models\\MTablaGeneral' => __DIR__ . '/../..' . '/app/Http/Models/MTablaGeneral.php',
+        'App\\Http\\Models\\MTarjeta' => __DIR__ . '/../..' . '/app/Http/Models/MTarjeta.php',
+        'App\\Http\\Models\\MTorneo' => __DIR__ . '/../..' . '/app/Http/Models/MTorneo.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -415,6 +434,13 @@ class ComposerStaticInitc1d9fac6873d71fb21a384127e8f6b2c
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
+        'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
+        'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
+        'Collective\\Html\\FormFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/FormFacade.php',
+        'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
+        'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
+        'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',

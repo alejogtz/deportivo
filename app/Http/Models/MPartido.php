@@ -11,15 +11,23 @@ class MPartido extends Model{
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
-    protected $filltable = ['id_partido','if_fase','lugar','hora','fecha','equipo_local','equipo_visitante','estatus_partido','eliminado'];
+    protected $filltable = [
+        'id_partido',
+        'id_torneo',
+        'tipo_fase',
+        'lugar',
+        'hora',
+        'fecha',
+        'equipo_local',
+        'equipo_visitante',
+        'estatus_partido',
+        'eliminado'
+    ];
 
     public function equipo(){
         return $this->belongsTo('MEquipo');
     }
-    public function fase(){
-        return $this->belongsTo('MFase');
-    }
-
+    
     public function goles(){
         return $this->hasMany('MGol');
     }

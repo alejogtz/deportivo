@@ -19,16 +19,4 @@ class MTorneo extends Model{
         'fecha_termino',
         'elimnado'
     ];
-
-    public function fases(){
-        return $this->hasMany('MFase');
-    }
-
-    public function tabla_clasificatorias(){
-        return $this->hasMany('MTablaClasificatoria');
-    }
-
-    public function tabla_general(){
-        return $this->hasMany('MTablaGeneral');
-    }
 }
