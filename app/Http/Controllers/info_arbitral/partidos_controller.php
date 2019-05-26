@@ -64,11 +64,7 @@ class partidos_controller extends Controller
     {
         $Partido = MPartido::where('id_partido',$partido)
         ->take(1)->first();
-        print "\n"."   fecha  ".$Partido->fecha;
-        print "\n"."   lugar  ".$Partido->lugar;
-        print "\n"."   equipo1  ".$Partido->equipo_local;
-        print "\n"."   equipo2  ".$Partido->equipo_visitante;
-        //return view("info_arbitral\goles");
+       
         return view('info_arbitral/goles')->with('elocal',$Partido->equipo_local);
     }
 }
