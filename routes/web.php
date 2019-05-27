@@ -20,7 +20,7 @@ Route::get('getCategorias','info_arbitral\partidos_controller@getCategorias');
 Route::get('getFases/{torneo}','info_arbitral\partidos_controller@fases_categoria');
 Route::get('fase_seleccionada/{jornada}&{torneo}','info_arbitral\partidos_controller@calendario_x_fase');
 Route::get('registro/{idpar}','info_arbitral\partidos_controller@verRegistro');//muestra la vista para registro de resultados
-Route::get('registro2/{idequi}','info_arbitral\partidos_controller@verRegistro2');
+Route::get('registro/registro2/{idequi}','info_arbitral\partidos_controller@verRegistro2');
 
 Route::get('jugadores/{equipo}','info_arbitral\partidos_controller@jugadores_equipo');
 
