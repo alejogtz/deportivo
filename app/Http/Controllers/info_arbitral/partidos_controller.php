@@ -11,6 +11,7 @@ use App\Http\Models\MJugador;
 use App\Http\Models\MFase;
 use App\Http\Models\MJugadorEquipo;
 
+
 class partidos_controller extends Controller
 {
     public function partidos_hoy($fecha,$fase,$torneo){
@@ -85,5 +86,13 @@ class partidos_controller extends Controller
             ->get();
             print $users;
        }*/
+
+     /*public function dbtest(){
+        $users = DB::select('select * from equipo ');
+        return view('info_arbitral/tablageneral')->with('users',$users);
+        //return view('user.index', ['users' => $users]);
+     } */ 
+
+    
 }
 ?>

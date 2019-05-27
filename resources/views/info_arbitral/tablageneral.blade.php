@@ -86,7 +86,9 @@
 <strong>PTS</strong>
 <em>Puntos</em></p>
 
+<div id="prueba">
 
+<div>
 <script type="text/javascript" src="/js/info_arbitral/tabla_general.js"></script>
 
 @endsection

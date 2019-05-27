@@ -6,14 +6,14 @@ $(function () {
 
 function metodo_listar()
 {
-    var genero = document.getElementById("select-torneo").value;
-    $('#sel1').html("torneo"+genero);
-   /* $.get('lista_alumnos/'+genero+'', function (data){
-        var html_select = '<option value="">SELECCIONE</option>';
+    var id_t = document.getElementById("select-torneo").value;
+    $('#sel1').html("torneo"+id_t);
+    $.get('tabla_x_torneo/'+id_t+'', function (data){
+        var html_select = '';
         for (var i = 0; i < data.length; i++)
-          html_select += '<option value="'+data[i].id+'">'+data[i].nombre_completo+'</option>'
+          html_select += '<p>'+data[i].tabla_general+'</p>';
    
-          $('#select-genero2').html(html_select);
+          $('#prueba').html(html_select);
    
-      });*/
+      });
 }
