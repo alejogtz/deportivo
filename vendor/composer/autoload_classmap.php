@@ -16,6 +16,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\fixture\\DirectorController' => $baseDir . '/app/Http/Controllers/fixture/DirectorController.php',
     'App\\Http\\Controllers\\info_arbitral\\partidos_controller' => $baseDir . '/app/Http/Controllers/info_arbitral/partidos_controller.php',
+    'App\\Http\\Controllers\\info_arbitral\\tabla_general' => $baseDir . '/app/Http/Controllers/info_arbitral/tabla_general.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',

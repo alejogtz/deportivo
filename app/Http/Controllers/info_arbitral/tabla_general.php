@@ -16,7 +16,7 @@ class tabla_general extends Controller
     }
 
     public function tabla_x_torneo($id_torneo){
-        $tablageneral =DB::select('SELECT public."tabla_general"(?)',array($id_torneo));
+        $tablageneral =DB::select("sELECT t.equipo,t.pts,t.pj,t.v,t.e,t.d,t.gf,t.gc,t.dif from (select * from torneo(?) ) as t",array($id_torneo));
         return $tablageneral;
     }
 

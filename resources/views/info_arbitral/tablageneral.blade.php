@@ -18,53 +18,18 @@
     <tr>
       <th scope="col">Pos</th>
       <th scope="col">Club</th>
-      <th scope="col">JJ</th>
-      <th scope="col">JG</th>
-      <th scope="col">JE</th>
-      <th scope="col">JP</th>
+      <th scope="col">PTS</th>
+      <th scope="col">PJ</th>
+      <th scope="col">V</th>
+      <th scope="col">E</th>
+      <th scope="col">D</th>
       <th scope="col">GF</th>
       <th scope="col">GC</th>
-      <th scope="col">Dif</th>
-      <th scope="col">PTS</th>
+      <th scope="col">DIF</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
+  <tbody id="tabla">
+   
   </tbody>
 </table>
 </div>
@@ -85,8 +50,6 @@
 <em>Diferencia de Goles</em>
 <strong>PTS</strong>
 <em>Puntos</em></p>
-
-<div id="prueba">
 
 <div>
 <script type="text/javascript" src="/js/info_arbitral/tabla_general.js"></script>
