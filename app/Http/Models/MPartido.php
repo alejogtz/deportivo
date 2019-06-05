@@ -15,12 +15,14 @@ class MPartido extends Model{
         'id_partido',
         'id_torneo',
         'tipo_fase',
+        'numero_fase',
         'lugar',
         'hora',
         'fecha',
         'equipo_local',
         'equipo_visitante',
         'estatus_partido',
+        'ganador',
         'eliminado'
     ];
 

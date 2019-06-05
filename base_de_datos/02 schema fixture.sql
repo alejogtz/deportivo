@@ -81,8 +81,8 @@ create table gol(
 	id_partido int references partido(id_partido),
 	id_jugador int,
 	minuto int,
-	equipo_en_contra int CHECK (equipo_en_contra>0),
-	equipo_en_favor_de int CHECK (equipo_en_favor_de >0),
+	equipo_en_contra int CHECK (equipo_en_contra>0), -- Es el id_equipo que recibio el gol
+	equipo_en_favor_de int CHECK (equipo_en_favor_de >0), --- Es el id_equipo que ANOTADOR
 	tipo_anotacion varchar (15),
 	elimnado boolean default false
 );
