@@ -1,6 +1,8 @@
 @extends('plantilla.plantilla')
 @section('cabeceras')
 <script src="/js/jquery.min.js"></script>
+<script src="js/bootstrap-table-pagination.js"></script>
+
 @endsection
 
 @section('content')

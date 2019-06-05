@@ -72,7 +72,9 @@ create table partido(
 	equipo_visitante int references equipo(id_equipo),
 	estatus_partido boolean, --- 0 = No Jugado;	1 = Jugado
 	ganador	varchar(9), 	  ---- Local | Visitante
-	elimnado boolean default false
+	elimnado boolean default false,
+	goles_local int, --- Para la tabla general
+	goles_visitante int --- Para la tabla geberal
 );
 
 create table gol(
