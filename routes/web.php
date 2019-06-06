@@ -61,6 +61,7 @@ Route::put('torneo/editbyid','fixture\TorneoController@editbyid');
 Route::put('torneo/eliminar','fixture\TorneoController@eliminar');
 Route::get('torneo/registros','fixture\TorneoController@getTable');
 Route::get('torneo/all','fixture\TorneoController@list');
+Route::get('listado_torneos','fixture\TorneoController@listado_torneos');
 
 Route::post('jugador_equipo/agregar','fixture\JugadorEquipoController@agregar');
 Route::put('jugador_equipo/editbyid','fixture\JugadorEquipoController@editbyid');

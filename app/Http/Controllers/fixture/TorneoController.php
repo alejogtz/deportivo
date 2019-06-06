@@ -53,4 +53,13 @@ class TorneoController extends Controller{
         ->delete();
         return back()->with('success','Se ha eliminado correctamente el registro.');
     }
+
+    public function listado_torneos(){
+        //date_default_timezone_get;
+        $date1 = date("Y-m-d"); 
+        $al = MTorneo::select('id_torneo','nombre','categoria','fecha_inaguracion','fecha_termino','elimnado')
+		->where('fecha_termino','>=',$date1)// >=current_date//where('categoria',$categoria)
+        ->get();
+        return $al;
+    }
 }
