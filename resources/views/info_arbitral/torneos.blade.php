@@ -9,7 +9,7 @@
 @section('content')
         
  
-<h2>Selecciona una Torneo</h2>
+<h2>Selecciona un Torneo</h2>
 <div id="categorias"> </div>
 
 <script type="text/javascript" src="js/info_arbitral/categorias.js"></script>

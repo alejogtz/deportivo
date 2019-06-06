@@ -8,8 +8,8 @@
                 <h2>Administrar <b>Directores</b></h2>
             </div>
             <div class="col-md-6 mb-3">
-                <a href="#addEmployeeModal" class="btn btn-success float-right d-flex" data-toggle="modal">
-                    <i class="material-icons mr-1">&#xE147;</i> <span>Add New Employee</span>
+                <a href="#addDirectorModal" class="btn btn-success float-right d-flex" data-toggle="modal">
+                    <i class="material-icons mr-1">&#xE147;</i> <span>Agregar Nuevo Director</span>
                 </a>
             </div>
         </div>
@@ -43,7 +43,7 @@
                         <a onclick = "editDirector({{ $d }})" href="#editDirectorModal" class="edit" data-toggle="modal">
                             <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                         </a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                        <a onclick = "deleteDirector({{ $d }})" href="#deleteEmployeeModal" class="delete" data-toggle="modal">
                             <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                         </a>
                     </td>
@@ -56,37 +56,33 @@
 
 
     <!-- Add Modal HTML -->
-    <div id="addEmployeeModal" class="modal fade">
+    <div id="addDirectorModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                {!!Form::open(array('url' => 'director/agregar', 'method' => 'POST','autocomplete' => 'off'))!!}
                     <div class="modal-header">						
-                        <h4 class="modal-title">Add Employee</h4>
+                        <h4 class="modal-title">Agregar Director</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
+                            <label>Nombre</label>
+                            <input name="nombre" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" required>
+                            <label>Apellido Paterno</label>
+                            <input name="apellido_p" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
-                        </div>					
+                            <label>Apellido Materno</label>
+                            <input name="apellido_m" type="text" class="form-control" required>
+                        </div>				
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-success" value="Agregar">
                     </div>
-                </form>
+                {!!Form::close()!!}
             </div>
         </div>
     </div>
@@ -95,20 +91,21 @@
     <div id="deleteEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                {!!Form::open(array('url' => 'director/eliminar', 'method' => 'PUT','autocomplete' => 'off'))!!}
                     <div class="modal-header">						
-                        <h4 class="modal-title">Delete Employee</h4>
+                        <h4 class="modal-title">Eliminar Director</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="modal-body">					
-                        <p>Are you sure you want to delete these Records?</p>
-                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    <div class="modal-body">
+                        <input name="id_director" id="id_director" type="hidden" class="form-control" required>					
+                        <p>Estás seguro que desea eliminar permanentemente este campo?</p>
+                        <p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-danger" value="Eliminar">
                     </div>
-                </form>
+                {!!Form::close()!!}
             </div>
         </div>
     </div>
@@ -117,28 +114,28 @@
     <div id="editDirectorModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id=form_edit method="POST" autocomplete="off" action="editbyid">
+                {!!Form::open(array('url' => 'director/editbyid', 'method' => 'PUT','autocomplete' => 'off'))!!}
                     <div class="modal-header">						
                         <h4 class="modal-title">Editar Director</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
                         <div class="form-group">
-                             <input id="id_director" type="hidden" class="form-control" required>
+                            <input name="id_director" id="id_director" type="hidden" class="form-control" required>
                             <label>Nombre</label>
-                            <input id="nombre" type="text" class="form-control" required>
+                            <input name="nombre" id="nombre" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Apellido Paterno</label>
-                            <input id="apellido_p" type="text" class="form-control" required>
+                            <input name="apellido_p" id="apellido_p" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Apellido Materno</label>
-                            <input id="apellido_m" type="text" class="form-control" required>
+                            <input name="apellido_m" id="apellido_m" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Eliminado por bandera</label>
-                            <select id="eliminado" class="form-control">
+                            <select name="eliminado" id="eliminado" class="form-control">
                                 
                             </select>
                         </div>					
@@ -147,7 +144,7 @@
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                         <input type="submit" class="btn btn-info" value="Guardar">
                     </div>
-                </form>
+                {!!Form::close()!!}
             </div>
         </div>
     </div>

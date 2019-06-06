@@ -76,15 +76,17 @@ create table partido(
 	equipo_visitante int references equipo(id_equipo),
 	estatus_partido boolean, --- 0 = No Jugado;	1 = Jugado
 	ganador	varchar(9), 	  ---- Local | Visitante
-	elimnado boolean default false
+	elimnado boolean default false,
+	goles_local int, --- Para la tabla general
+	goles_visitante int --- Para la tabla geberal
 );
 
 create table gol(
 	id_partido int references partido(id_partido),
 	id_jugador int,
 	minuto int,
-	equipo_en_contra int CHECK (equipo_en_contra>0),
-	equipo_en_favor_de int CHECK (equipo_en_favor_de >0),
+	equipo_en_contra int CHECK (equipo_en_contra>0), -- Es el id_equipo que recibio el gol
+	equipo_en_favor_de int CHECK (equipo_en_favor_de >0), --- Es el id_equipo que ANOTADOR
 	tipo_anotacion varchar (15),
 	elimnado boolean default false
 );

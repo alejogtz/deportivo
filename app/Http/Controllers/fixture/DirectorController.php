@@ -9,7 +9,7 @@ use App\Http\Models\MDirectorT;
 
 class DirectorController extends Controller{
     public function getTableDirector(){
-        $vertodo = MDirectorT::select('*')->get();
+        $vertodo = MDirectorT::select('*')->orderBy('id_director')->get();
         return view('fixture/director')->with('dis',$vertodo);
     }
 
@@ -18,35 +18,24 @@ class DirectorController extends Controller{
         return response()->json(MDirectorT::select('*')->get());
    }
 
-
-   public function editbyid(Request $data)
-    {
-        $editar = MDirectorT::find($data->id_director);
-
-        $editar->nombre = $data->nombre;
-        $editar->apellido_p = $data->apellido_p;
-        $editar->apellido_m = $data->apellido_m;
-        $editar->eliminado = $data->eliminado;
-
-        $editar->save();
-
+   public function agregar(Request $data){
+        $editar = MDirectorT::insert(['nombre'=>$data->nombre,'apellido_p'=>$data->apellido_p,'apellido_m'=>$data->apellido_m]);
         return redirect()->to('/director/registros');
     }
 
-    public function editbyid2(Request $data)
-    {
-        print "pito";
-        /*
-        $editar = MDirectorT::where('id_director',$data->id_director)->take(1)->first();
 
-        $editar->nombre = $data->nombre;
-        $editar->apellido_p = $data->apellido_p;
-        $editar->apellido_m = $data->apellido_m;
-        $editar->eliminado = $data->eliminado;
+    public function editbyid(Request $data){
+        $editar = MDirectorT::select('nombre','apellido_p','apellido_m','elimnado')
+        ->where('id_director','=',$data->id_director)
+        ->update(['nombre'=>$data->nombre,'apellido_p'=>$data->apellido_p,'apellido_m'=>$data->apellido_m,'elimnado'=>$data->eliminado]);
+        return redirect()->to('/director/registros');
+    }
 
-        $editar->save();
-
-        response()->json(['mensaje' => 'Actualizo Correctamente']);*/
+    public function eliminar(Request $data){
+        $editar = MDirectorT::select('id_director')
+        ->where('id_director','=',$data->id_director)
+        ->delete();
+        return redirect()->to('/director/registros');
     }
 
     public function listado_director($id_director){

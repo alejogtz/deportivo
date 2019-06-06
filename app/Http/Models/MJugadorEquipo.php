@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class MJugadorEquipo extends Model{
     //nombre de la tabla
     protected $table = 'jugador_equipo';
-
+ 
     //llave primaria
     protected $primarykey = null;
     public $timestamps = false;
