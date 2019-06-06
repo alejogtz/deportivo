@@ -1,6 +1,5 @@
 @extends('plantilla.plantilla')
 @section('content')
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!--ALERT FOR ALL-->
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
@@ -176,5 +175,4 @@
     </div>
 
 </div>
-<script src="{{ asset('assets/js/fixture/crud_script.js') }}"></script>
 @endsection

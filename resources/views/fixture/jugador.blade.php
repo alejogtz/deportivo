@@ -1,7 +1,6 @@
 @extends('plantilla.plantilla')
 @section('content')
 <link href="{{ asset('assets/css/registros.css') }} " rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 <!--ALERT FOR ALL-->
@@ -277,5 +276,4 @@
     </div>
 
 </div>
-<script src="{{ asset('assets/js/fixture/crud_script.js') }}"></script>
 @endsection
