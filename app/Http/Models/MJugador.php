@@ -7,7 +7,7 @@ class MJugador extends Model{
     protected $table = 'jugador';
 
     //llave primaria
-    protected $primarykey = 'id_jugador';
+    protected $primaryKey = 'id_jugador';
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
@@ -15,12 +15,13 @@ class MJugador extends Model{
         'id_jugador',
         'nombre',
         'apellido_p',
-        'apelldo_m',
+        'apellido_m',
         'no_playera',
         'estatura',
         'posicion',
         'fecha_nac',
         'foto',
-        'eliminado'
+        'sexo',
+        'elimnado'
     ];
 }

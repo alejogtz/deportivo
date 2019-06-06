@@ -41,13 +41,15 @@ create table jugador(
 	posicion varchar(20),
 	fecha_nac date,
 	foto text,
+	sexo char,
 	elimnado boolean default false
 );
 
 
 create table jugador_equipo(
 	id_equipo int references equipo (id_equipo),
-	id_jugador int references jugador(id_jugador)
+	id_jugador int references jugador (id_jugador),
+	primary key(id_equipo,id_jugador)
 );
 
 create table torneo(

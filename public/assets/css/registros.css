@@ -1,3 +1,9 @@
-.form_contenedor{
-    margin: 3%;
+.image_profile {
+    height: 30px;
+    width: 30px;
+}
+
+.image_jugador {
+    height: 400px;
+    width: 400px;
 }
