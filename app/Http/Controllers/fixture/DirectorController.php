@@ -48,4 +48,12 @@ class DirectorController extends Controller{
 
         response()->json(['mensaje' => 'Actualizo Correctamente']);*/
     }
+
+    public function listado_director($id_director){
+        $al = MDirectorT::/*where('id_director',$id_director)
+        ->pluck('nombre','apellido_p','apellido_m','id_director');*/select('nombre','apellido_p','apellido_m')
+		->where('id_director',$id_director)
+        ->get();
+        return $al;
+    }
 }

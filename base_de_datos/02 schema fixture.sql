@@ -31,11 +31,15 @@ create table equipo(
 	elimnado boolean default false
 );
 
+ALTER TABLE equipo
+add COLUMN  categoria varchar(30)
+
 create table jugador(
 	id_jugador SERIAL primary key,
 	nombre varchar (50),
 	apellido_p varchar(30),
 	apellido_m varchar (30),
+	sexo char(1) CHECK (sexo = 'M' OR sexo = 'F'),
 	no_playera int CHECK (no_playera>0),
 	estatura numeric CHECK (estatura>0),
 	posicion varchar(20),

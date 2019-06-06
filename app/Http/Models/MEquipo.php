@@ -17,7 +17,8 @@ class MEquipo extends Model{
         'nombre',
         'fecha_inscripcion',
         'lugar_procedencia',
-        'elimnado'
+        'elimnado',
+        'categoria'
     ];
 
     public function directorT(){

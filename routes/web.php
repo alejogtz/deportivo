@@ -5,8 +5,21 @@ Route::get('/', function () {
 });
 
 ///aqui los de fixture
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+//Route::get('seleccion','fixture\FixtureController@cargarCategorias');
+Route::get('listado_equipos/{categoria}','fixture\FixtureController@listado_equipos');
+
+Route::get('listado_torneos','fixture\TorneoController@listado_torneos');
+
+//
+Route::get('seleccionar','fixture\FixtureController@categorias');
+Route::get('fixtureEquipos/{equipos}','fixture\FixtureController@roundRobin');
+
+//INSERTAR PARTIDOS
+Route::post('insertar_partidos','fixture\FixtureController@insertar_partidos');
 
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 //aqui los de registro
 Route::view('torneos', 'info_arbitral/torneos');
@@ -45,3 +58,5 @@ Route::post('director/editbyid','fixture\DirectorController@editbyid');
 Route::put('director/editbyid2','fixture\DirectorController@editbyid2');
 Route::get('director/registros','fixture\DirectorController@getTableDirector');
 Route::get('director/all','fixture\DirectorController@list');
+
+
