@@ -47,4 +47,12 @@ class DirectorController extends Controller{
         ->delete();
         return back()->with('success','Se ha eliminado correctamente el registro.');
     }
+
+    public function listado_director($id_director){
+        $al = MDirectorT::/*where('id_director',$id_director)
+        ->pluck('nombre','apellido_p','apellido_m','id_director');*/select('nombre','apellido_p','apellido_m')
+		->where('id_director',$id_director)
+        ->get();
+        return $al;
+    }
 }

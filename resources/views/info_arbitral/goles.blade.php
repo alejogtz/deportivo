@@ -1,7 +1,12 @@
-@extends('plantilla.plantilla') @section('cabeceras')
-<script src="assets/jquery/jquery-3.4.1.min.js"></script>
-<script src="assets/js/agregar.js"></script>
+@extends('plantilla.plantilla') 
+
+@section('cabeceras')
+<script src="{{ asset('assets/jquery/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/agregar.js') }}"></script>
 @endsection @section('content')
+
+<input type="hidden" id="idlocal" value="{{$partidoj->equipo_local}}"/> 
+<input type="hidden" id="idvisit" value="{{$partidoj->equipo_visitante}}"/>
 
 <div class="container-fluid">
 
@@ -43,7 +48,7 @@
                             <div class="card mb-3" style="max-width: 540px;">
                                 <div class="row no-gutters ">
                                     <div class="col-md-4">
-                                        <img src="..." class="card-img" alt="(Imagen del Jugador)">
+                                        {{-- <img src="..." class="card-img" alt="(Imagen del Jugador)"> --}}
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -52,7 +57,7 @@
                                                 <div class="form-group">
                                                     <label for="jugador">Jugador que anoto</label>
                                                     <select class="form-control" id="goljugador">
-                                                      <option selected>- Selecciona el jugador -</option>
+                                                      <option value="">- Seleccione -</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

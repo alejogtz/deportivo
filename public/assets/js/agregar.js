@@ -20,8 +20,22 @@ function eliminaelemento(){
 //Funciones para agregar el codigo de insertar goles
 function agoleslocal(){
     var agolesl = $('#plantillagoles').html();
-    $('#goleslocal').append(agolesl);
+    $('#goleslocal').append(agolesl); 
+    
+    var elocal = document.getElementById("idlocal").value;
+    console.log(elocal);
+
+    $.get('registro2/'+elocal+'',function(datos){
+        console.log("entro");
+        var lista='<opcion value="">Seleccione</option>';
+        for(var i=0; i<datos.length; i++)
+        {
+            lista+='<option value"'+datos[i].id_jugadores+'">'+datos[i].nombre+' '+datos[i].apellido_p+' '+datos[i].apellido_m+'</option>'            
+        }
+        $('#goljugador').html(lista);
+    });
 }
+
 function agolesvisitante(){
     var agolesl = $('#plantillagoles').html();
     $('#golesvisitante').append(agolesl);

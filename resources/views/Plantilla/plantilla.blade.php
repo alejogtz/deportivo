@@ -28,6 +28,7 @@
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light">Registro</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Equipos</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">FIXTURE</a>
         <div class="btn-group dropright">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               registrar
@@ -39,6 +40,7 @@
             </div>
           </div>
         <a href="/torneos" class="btn btn-primary">Informacion Arbitral</a>
+        <a href="/tabla_general" class="btn btn-success">Tabla General</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

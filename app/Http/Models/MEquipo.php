@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class MEquipo extends Model{
     //nombre de la tabla
     protected $table = 'equipo';
-
+ 
     //llave primaria
     protected $primaryKey = 'id_equipo';
     public $timestamps = false;
@@ -17,7 +17,8 @@ class MEquipo extends Model{
         'nombre',
         'fecha_inscripcion',
         'lugar_procedencia',
-        'elimnado'
+        'elimnado',
+        'categoria'
     ];
 
     public function directorT(){
