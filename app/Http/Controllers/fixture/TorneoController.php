@@ -48,10 +48,14 @@ class TorneoController extends Controller{
     }
 
     public function eliminar(Request $data){
-        $editar = MTorneo::select('id_torneo')
-        ->where('id_torneo','=',$data->id_torneo_d)
-        ->delete();
-        return back()->with('success','Se ha eliminado correctamente el registro.');
+        try{
+            $editar = MTorneo::select('id_torneo')
+            ->where('id_torneo','=',$data->id_torneo_d)
+            ->delete();
+            return back()->with('success','Se ha eliminado correctamente el registro.');
+        } catch(QueryException $ex){ 
+            return back()->withErrors('Es imposible borrar el registro ya que otros dependen de el.');
+        }
     }
 
     public function listado_torneos(){

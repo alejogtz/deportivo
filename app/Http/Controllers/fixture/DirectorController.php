@@ -5,6 +5,8 @@ namespace App\Http\Controllers\fixture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\MDirectorT;
+use Illuminate\Database\QueryException;
+
 
 
 class DirectorController extends Controller{
@@ -42,15 +44,18 @@ class DirectorController extends Controller{
     }
 
     public function eliminar(Request $data){
-        $editar = MDirectorT::select('id_director')
-        ->where('id_director','=',$data->id_director_d)
-        ->delete();
-        return back()->with('success','Se ha eliminado correctamente el registro.');
+        try{
+            MDirectorT::select('id_director')
+            ->where('id_director','=',$data->id_director_d)
+            ->delete();
+            return back()->with('success','Se ha eliminado correctamente el registro.');
+        } catch(QueryException $ex){ 
+            return back()->withErrors('Es imposible borrar el registro ya que otros dependen de el.');
+        }
     }
 
     public function listado_director($id_director){
-        $al = MDirectorT::/*where('id_director',$id_director)
-        ->pluck('nombre','apellido_p','apellido_m','id_director');*/select('nombre','apellido_p','apellido_m')
+        $al = MDirectorT::select('id_director','nombre','apellido_p','apellido_m')
 		->where('id_director',$id_director)
         ->get();
         return $al;

@@ -58,7 +58,7 @@
     </div>
 
     <div class="table-responsive-xl table-hover table-striped">
-        <table class="table">
+        <table id="table-pertence" class="table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -72,24 +72,7 @@
                 </tr>
             </thead>
             <tbody id="equipo_pertenece">
-                @if($jugadores = Session::get('jugadores'))  
-                    @foreach ($jugadores as $j)
-                        <tr>
-                            <td>{{ $j->id_jugador }}</td>
-                            <td>{{ $j->nombre }}</td>
-                            <td>{{ $j->no_playera }}</td>
-                            <td>{{ $j->estatura }}</td>
-                            <td>{{ $j->posicion }}</td>
-                            <td>{{ $j->sexo }}</td>
-                            <td>{{ $j->edad }}</td>
-                            <td>
-                                <a onclick="deleteDeEquipo({{$j->id_jugador}} , {{$equipo->id_equipo}})" href="#deleteDeEquipo" class="delete" data-toggle="modal">
-                                    <i class="material-icons text-danger" data-toggle="tooltip" title="Remover">remove_circle</i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
+                
             </tbody>
         </table>
     </div>
@@ -103,41 +86,24 @@
     </div>
 
     <div class="table-responsive-xl table-hover table-striped">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre Completo</th>
-                        <th scope="col">No Playera</th>
-                        <th scope="col">Estatura</th>
-                        <th scope="col">Posición</th>
-                        <th scope="col">Sexo</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Acción</th>
-                    </tr>
-                </thead>
-                <tbody id="equipo_no_pertenece">
-                    @if($jugadoresno = Session::get('jugadoresno'))  
-                        @foreach ($jugadoresno as $j)
-                            <tr>
-                                <td>{{ $j->id_jugador }}</td>
-                                <td>{{ $j->nombre }}</td>
-                                <td>{{ $j->no_playera }}</td>
-                                <td>{{ $j->estatura }}</td>
-                                <td>{{ $j->posicion }}</td>
-                                <td>{{ $j->sexo }}</td>
-                                <td>{{ $j->edad }}</td>
-                                <td>
-                                    <a onclick="agregarAlEquipo({{$j->id_jugador}} , {{$equipo->id_equipo}})" href="#agregarAlEquipo" class="delete" data-toggle="modal">
-                                        <i class="material-icons text-success" data-toggle="tooltip" title="Agregar">add_circle</i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
-        </div>
+        <table id="table-no-pertence" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">No Playera</th>
+                    <th scope="col">Estatura</th>
+                    <th scope="col">Posición</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody id="equipo_no_pertenece">
+                
+            </tbody>
+        </table>
+    </div>
 
 
     <!-- Delete Modal HTML -->

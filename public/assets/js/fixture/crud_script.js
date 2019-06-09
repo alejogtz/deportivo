@@ -156,71 +156,12 @@ function editTorneo(id) {
 }
 
 
-/** 
-    <th scope="col">ID</th>
-    <th scope="col">Nombre Completo</th>
-    <th scope="col">No Playera</th>
-    <th scope="col">Estatura</th>
-    <th scope="col">Posición</th>
-    <th scope="col">Sexo</th>
-    <th scope="col">Edad</th>
-    <th scope="col">Acción</th>
-    <td>
-        <a onclick="deleteDeEquipo(data[i].id_jugador,data[i].id_equipo)" href="#deleteDeEquipo" class="delete" data-toggle="modal">
-            <i class="material-icons" data-toggle="tooltip" title="Edit">remove_circle</i>
-        </a>
-    </td>
-    <a onclick = "deleteTorneo({{ $d }})" href="#deleteTorneoModal" class="delete" data-toggle="modal">
-            <i class="material-icons" data-toggle="tooltip" title="Delete">check_circle</i>
-        </a>
-**/
-
 function equipoSelecionado(){
+
     $equipo = document.getElementById("equipo_selected");
     document.getElementById("nombre_equipo").innerHTML = $equipo.options[$equipo.selectedIndex].innerHTML;
-    $.get('../jugador_equipo/en_equipo/'+$equipo.value,function (data){
-        let $tabla1 = document.getElementById("equipo_pertenece");
-        var rows = '';
-        for(var i=0; i<data.length; i++){
-            rows += '<tr>';
-                rows += '<td>'+data[i].id_jugador+'</td>';
-                rows += '<td>'+data[i].nombre+ ' '+data[i].apellido_p+' '+data[i].apellido_m+'</td>';
-                rows += '<td>'+data[i].no_playera+'</td>';
-                rows += '<td>'+data[i].estatura+'</td>';
-                rows += '<td>'+data[i].posicion+'</td>';
-                rows += '<td>'+data[i].sexo+'</td>';
-                rows += '<td>'+data[i].edad+'</td>';
-                rows += '<td>';
-                    rows += '<a onclick="deleteDeEquipo('+data[i].id_jugador+','+$equipo.value+')'+'" href="#deleteDeEquipo" class="delete" data-toggle="modal">';
-                        rows += '<i class="material-icons text-danger" data-toggle="tooltip" title="Remover">remove_circle</i>';
-                    rows += '</a>';
-                rows +='</td>';
-            rows += '</tr>';
-        }
-        $tabla1.innerHTML = rows;
-    });
-
-    $.get('../jugador_equipo/no_en_equipo/'+$equipo.value,function (data){
-        let $tabla1 = document.getElementById("equipo_no_pertenece");
-        var rows = '';
-        for(var i=0; i<data.length; i++){
-            rows += '<tr>';
-                rows += '<td>'+data[i].id_jugador+'</td>';
-                rows += '<td>'+data[i].nombre+ ' '+data[i].apellido_p+' '+data[i].apellido_m+'</td>';
-                rows += '<td>'+data[i].no_playera+'</td>';
-                rows += '<td>'+data[i].estatura+'</td>';
-                rows += '<td>'+data[i].posicion+'</td>';
-                rows += '<td>'+data[i].sexo+'</td>';
-                rows += '<td>'+data[i].edad+'</td>';
-                rows += '<td>';
-                    rows += '<a onclick="agregarAlEquipo('+data[i].id_jugador+','+$equipo.value+')'+'" href="#agregarAlEquipo" class="delete" data-toggle="modal">';
-                        rows += '<i class="material-icons text-success" data-toggle="tooltip" title="Agregar">add_circle</i>';
-                    rows += '</a>';
-                rows +='</td>';
-            rows += '</tr>';
-        }
-        $tabla1.innerHTML = rows;
-    });
+    table_pertenece.ajax.url('../jugador_equipo/en_equipo_json/'+$equipo.value).load();
+    table_no_pertenece.ajax.url('../jugador_equipo/no_en_equipo_json/'+$equipo.value).load();    
 }
 
 function deleteDeEquipo(data,equipo){
@@ -241,3 +182,112 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 3000);
+
+
+$(document).ready(function() {
+    $('#table').DataTable({
+        "language": {
+            "info": "_TOTAL_ registros",
+            "search": "Buscar",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior",
+            },
+            "lengthMenu": 'Mostrar <select >'+
+                        '<option value="10">10</option>'+
+                        '<option value="25">25</option>'+
+                        '<option value="50">50</option>'+
+                        '<option value="100">100</option>'+
+                        '<option value="-1">Todos</option>'+
+                        '</select> registros',
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "emptyTable": "No hay datos",
+            "zeroRecords": "No hay coincidencias", 
+            "infoEmpty": "",
+            "infoFiltered": ""
+        }
+    });
+});
+
+var table_pertenece = $('#table-pertence').DataTable({
+    "ajax": '../jugador_equipo/en_equipo_json/0',
+    "columns": [
+        {data: 'id_jugador'},
+        {data: 'nombre'},
+        {data: 'no_playera'},
+        {data: 'estatura'},
+        {data: 'posicion'},
+        {data: 'sexo'},
+        {data: 'edad'},
+        {data: 'action'}
+    ],
+    "language": {
+        "info": "_TOTAL_ registros",
+        "search": "Buscar",
+        "paginate": {
+            "next": "Siguiente",
+            "previous": "Anterior",
+        },
+        "lengthMenu": 'Mostrar <select >'+
+                    '<option value="10">10</option>'+
+                    '<option value="25">25</option>'+
+                    '<option value="50">50</option>'+
+                    '<option value="100">100</option>'+
+                    '<option value="-1">Todos</option>'+
+                    '</select> registros',
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "emptyTable": "No hay datos",
+        "zeroRecords": "No hay coincidencias", 
+        "infoEmpty": "",
+        "infoFiltered": ""
+    }
+});
+
+var table_no_pertenece = $('#table-no-pertence').DataTable({
+    "ajax": '../jugador_equipo/no_en_equipo_json/0',
+    "columns": [
+        {data: 'id_jugador'},
+        {data: 'nombre'},
+        {data: 'no_playera'},
+        {data: 'estatura'},
+        {data: 'posicion'},
+        {data: 'sexo'},
+        {data: 'edad'},
+        {data: 'action'}
+    ],
+    "language": {
+        "info": "_TOTAL_ registros",
+        "search": "Buscar",
+        "paginate": {
+            "next": "Siguiente",
+            "previous": "Anterior",
+        },
+        "lengthMenu": 'Mostrar <select >'+
+                    '<option value="10">10</option>'+
+                    '<option value="25">25</option>'+
+                    '<option value="50">50</option>'+
+                    '<option value="100">100</option>'+
+                    '<option value="-1">Todos</option>'+
+                    '</select> registros',
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "emptyTable": "No hay datos",
+        "zeroRecords": "No hay coincidencias", 
+        "infoEmpty": "",
+        "infoFiltered": ""
+    }
+});
+
+
+$(document).ready(function(){
+    $equipo = document.getElementById("equipo_selected");
+    if($equipo.value != 'Seleciona un equipo'){
+        table_pertenece.ajax.url('../jugador_equipo/en_equipo_json/'+$equipo.value).load();
+        table_no_pertenece.ajax.url('../jugador_equipo/no_en_equipo_json/'+$equipo.value).load();
+    }else{
+        table_pertenece;
+        table_no_pertenece;
+    }
+});

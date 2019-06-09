@@ -18,8 +18,10 @@
 
   <!-- CDN Data Table No Borrar -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+  
+  <link rel="stylesheet" href="{{ asset('assets/vendor/DataTables/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/DataTables/css/dataTables.bootstrap4.min.css') }}">
+  
      @yield('cabeceras') 
 </head>
 
@@ -108,14 +110,17 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.js') }}"></script>
 
   <!-- DataTable Script NO BORRAR -->
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  
+  
+  <script src="{{ asset('assets/vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/DataTables/js/dataTables.bootstrap4.min.js') }}"></script>
+  
 
   <script src="{{ asset('assets/js/fixture/crud_script.js') }}"></script>
-
+    
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
