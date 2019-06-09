@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\MEquipo;
 use App\Http\Models\MDirectorT;
+use Illuminate\Database\QueryException;
 
 
 class EquipoController extends Controller{
@@ -55,9 +56,13 @@ class EquipoController extends Controller{
     }
 
     public function eliminar(Request $data){
-        $editar = MEquipo::select('id_equipo')
-        ->where('id_equipo','=',$data->id_equipo_d)
-        ->delete();
-        return back()->with('success','Se ha eliminado correctamente el registro.');
+        try{
+            MEquipo::select('id_equipo')
+            ->where('id_equipo','=',$data->id_equipo_d)
+            ->delete();
+            return back()->with('success','Se ha eliminado correctamente el registro.');
+        } catch(QueryException $ex){ 
+            return back()->withErrors('Es imposible borrar el registro ya que otros dependen de el.');
+        }
     }
 }

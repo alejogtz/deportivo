@@ -60,7 +60,7 @@ Route::get('equipo/registro',function () {
     return view('registroequipo');
 });
 
-Route::get('director/registros','fixture\DirectorController@getTableDirector');
+Route::get('director/registros','fixture\DirectorController@getTable');
 Route::get('director/all','fixture\DirectorController@list');
 Route::post('director/agregar','fixture\DirectorController@agregar');
 Route::put('director/editbyid','fixture\DirectorController@editbyid');
@@ -93,3 +93,5 @@ Route::get('jugador_equipo/registros','fixture\JugadorEquipoController@getTable'
 Route::get('jugador_equipo/all','fixture\JugadorEquipoController@list');
 Route::get('jugador_equipo/en_equipo/{id}','fixture\JugadorEquipoController@listJugadoresInEquipo');
 Route::get('jugador_equipo/no_en_equipo/{id}','fixture\JugadorEquipoController@listJugadoresNotInEquipo');
+Route::get('jugador_equipo/en_equipo_json/{id}','fixture\JugadorEquipoController@listJugadoresInEquipoTable');
+Route::get('jugador_equipo/no_en_equipo_json/{id}','fixture\JugadorEquipoController@listJugadoresNotInEquipoTable');

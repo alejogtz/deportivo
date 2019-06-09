@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\MJugador;
 use Illuminate\Support\Facades\File;
+use Illuminate\Database\QueryException;
 
 
 class JugadorController extends Controller{
@@ -82,13 +83,16 @@ class JugadorController extends Controller{
     }
 
     public function eliminar(Request $data){
-        $editar = MJugador::find($data->id_jugador);
-        $image_path = $editar->foto;  
-        if(File::exists(public_path('assets/images_jugador/').$image_path)) {
-            File::delete(public_path('assets/images_jugador/').$image_path);
+        try{
+            $editar = MJugador::find($data->id_jugador);
+            $image_path = $editar->foto;  
+            if(File::exists(public_path('assets/images_jugador/').$image_path)) {
+                File::delete(public_path('assets/images_jugador/').$image_path);
+            }
+            $editar->delete();
+            return back()->with('success','Se ha eliminado correctamente el registro.');
+        } catch(QueryException $ex){ 
+            return back()->withErrors('Es imposible borrar el registro ya que otros dependen de el.');
         }
-        $editar->delete();
-        return back()->with('success','Se ha eliminado correctamente el registro.');
     }
-
 }

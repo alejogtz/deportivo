@@ -37,7 +37,7 @@
     </div>
 
     <div class="table-responsive-xl table-hover table-striped">
-        <table class="table">
+        <table id="table" class="table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
