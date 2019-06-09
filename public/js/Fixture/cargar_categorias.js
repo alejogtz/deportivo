@@ -1,8 +1,4 @@
 $(function(){
-    //$('#select-categoria').on('change',metodo_listar_categoria);
-});
-
-$(function(){
     $('#select-torneos').append(getData);
 });
 
@@ -19,7 +15,6 @@ function getData(){
         $('#select-torneos').html(html_select);        
     });
     $('#select-torneos').on('change',function(){
-        //console.log("");
         var equipo = document.getElementById("select-torneos").value;
         id = $(this).children(":selected").attr("id");
         nombre_torneo = $("#select-torneos option:selected").text();
@@ -47,29 +42,6 @@ function getData(){
     });
 }
 
-/*function metodo_listar_categoria(){
-    var equipo = document.getElementById("select-categoria").value;
-    $.get('listado_equipos/'+equipo+'',function(data){
-    var html_select = '';
-    for (var i = 0; i < data.length; i++){
-            html_select += '<div class="col-md-4 mb-3">'
-            +'<div class="card" style="width: 15rem;">'
-            +'<div class="card-body">'
-            +'<h5 class="card-title">Nombre: '+data[i].nombre+'</h5> '
-            +'<p class="texto_tarjetas" >ID Equipo: '+data[i].id_equipo+'</p> '
-            +'<p class="texto_tarjetas">Categoria: '+data[i].categoria+'</p> '
-            +'<p class="texto_tarjetas">Lugar Procedencia: '+data[i].lugar_procedencia+'</p>'
-            +'<div class="element" id="div_1">'
-            +'<input type="button"  onclick="addTeam(this)" id="'+data[i].id_equipo+'" value="Añadir Equipo" class="btn btn-primary" />'
-            +'</div>'
-            +'</div>'
-            +'</div>'
-            +'</div>'
-    }
-    $('#select-equipos').html(html_select);
-    });
-}*/
-
 var equipos="";
 var tamano;
 function addTeam(comp){
@@ -79,7 +51,7 @@ function addTeam(comp){
     
     //AÑADE EQUIPOS SELECCIONADOS
     $(".teams:last").after(' <input type="button" id="'+comp.id+'r" value="ID EQUIPO: '+comp.id+'" class="btn btn-primary" style="margin-bottom: 10px;" />');
-    $(".ganerated").html(' <input type="button" id="generar" disabled="true" value="GENERAR FIXTURE" class="btn btn-primary" style="margin-bottom: 10px;"  data-toggle="modal" data-target="#exampleModalLong" />');
+    $(".ganerated").html(' <input type="button" onclick="getEquipos(equipos)" id="generar" disabled="true" value="GENERAR FIXTURE" class="btn btn-primary" style="margin-bottom: 10px;"  data-toggle="modal" data-target="#exampleModalLong" />');
 
     //DESHABILITAR BOTON DE EQUIPO SELECCIONADO
     $("#"+comp.id+"").attr("disabled", true);
@@ -111,7 +83,7 @@ function generarFixture(tamano){
     else
         $("#generar").attr("disabled", true);
     var arreglo = equipos;
-    $("#generar").click(getEquipos(arreglo));
+    /*$("#generar").click(getEquipos(arreglo));
         
         /*$("#generar").click(getEquipos(arreglo));
         /*
@@ -131,11 +103,11 @@ function generarFixture(tamano){
 
 
 function getEquipos($equipos){
+    console.log("generarFixture");
     var html_select = '';
     var equipo_home;
     var equipo_away;
     var route = '/fixtureEquipos/'+$equipos+'';
-    console.log(route);
     $.get(route,function(data){
         $(".modal-title").html("TORNEO: "+nombre_torneo+'');
         for(var i =0; i<data.length;i++){
@@ -151,9 +123,9 @@ function getEquipos($equipos){
             }
         }
         $(".modal-body").html(html_select);
-        $("#guardar").click(function(){
             
-
+        $("#guardar").click(function(){
+            console.log('I want to die');
         });
     });
 }

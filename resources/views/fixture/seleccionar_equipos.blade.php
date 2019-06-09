@@ -46,10 +46,12 @@
                         ...
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="guardar" >Guardar cambios</button>
-                        <!--{!!Form::submit('Registrar',['content'=>'<span>Guardar cambios</span>', 'class'=>'btn btn-primary'])!!}
-                        {!!Form::close()!!}-->
+                        <form action="seleccionar" method="get"> 
+                          @csrf
+                          <input class="partidos" id="partidos" type="hidden">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary" id="guardar" >Guardar cambios</button>
+                        </form>
                       </div>
                     </div>
                   </div>

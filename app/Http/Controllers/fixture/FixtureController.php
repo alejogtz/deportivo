@@ -118,6 +118,7 @@ class FixtureController extends Controller{
 	}
 
 	function insertar_partidos(Request $request){
+			
 		return view('fixture/seleccionar_equipos');
 	}
 
