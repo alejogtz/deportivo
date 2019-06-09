@@ -109,6 +109,10 @@ function getEquipos($equipos){
     var equipo_away;
     var route = '/fixtureEquipos/'+$equipos+'';
     $.get(route,function(data){
+        var torneo = document.getElementById('select-torneos').value;
+        document.getElementById('torneo_select').value = torneo;
+        document.getElementById('partidos').value = data;
+
         $(".modal-title").html("TORNEO: "+nombre_torneo+'');
         for(var i =0; i<data.length;i++){
             var pos = data[i];
@@ -123,10 +127,6 @@ function getEquipos($equipos){
             }
         }
         $(".modal-body").html(html_select);
-            
-        $("#guardar").click(function(){
-            console.log('I want to die');
-        });
     });
 }
 

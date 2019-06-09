@@ -48,7 +48,8 @@
                       <div class="modal-footer">
                         <form action="seleccionar" method="get"> 
                           @csrf
-                          <input class="partidos" id="partidos" type="hidden">
+                          <input type="hidden" id="torneo_selec" name="torneo_select">
+                          <input type="hidden" id="partidos" name="partidos" >
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                           <button type="submit" class="btn btn-primary" id="guardar" >Guardar cambios</button>
                         </form>

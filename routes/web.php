@@ -95,3 +95,9 @@ Route::get('jugador_equipo/en_equipo/{id}','fixture\JugadorEquipoController@list
 Route::get('jugador_equipo/no_en_equipo/{id}','fixture\JugadorEquipoController@listJugadoresNotInEquipo');
 Route::get('jugador_equipo/en_equipo_json/{id}','fixture\JugadorEquipoController@listJugadoresInEquipoTable');
 Route::get('jugador_equipo/no_en_equipo_json/{id}','fixture\JugadorEquipoController@listJugadoresNotInEquipoTable');
+
+
+
+Route::get('mapa',function () {
+    return view('fixture/mapa');
+});
