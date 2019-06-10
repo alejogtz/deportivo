@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\fixture\\TorneoController' => $baseDir . '/app/Http/Controllers/fixture/TorneoController.php',
     'App\\Http\\Controllers\\info_arbitral\\partidos_controller' => $baseDir . '/app/Http/Controllers/info_arbitral/partidos_controller.php',
     'App\\Http\\Controllers\\info_arbitral\\tabla_general' => $baseDir . '/app/Http/Controllers/info_arbitral/tabla_general.php',
+    'App\\Http\\Controllers\\partidos\\ControladorEtapaClasificatoria' => $baseDir . '/app/Http/Controllers/partidos/ControladorEtapaClasificatoria.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',

@@ -421,6 +421,7 @@ class ComposerStaticInitc1d9fac6873d71fb21a384127e8f6b2c
         'App\\Http\\Controllers\\fixture\\TorneoController' => __DIR__ . '/../..' . '/app/Http/Controllers/fixture/TorneoController.php',
         'App\\Http\\Controllers\\info_arbitral\\partidos_controller' => __DIR__ . '/../..' . '/app/Http/Controllers/info_arbitral/partidos_controller.php',
         'App\\Http\\Controllers\\info_arbitral\\tabla_general' => __DIR__ . '/../..' . '/app/Http/Controllers/info_arbitral/tabla_general.php',
+        'App\\Http\\Controllers\\partidos\\ControladorEtapaClasificatoria' => __DIR__ . '/../..' . '/app/Http/Controllers/partidos/ControladorEtapaClasificatoria.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
