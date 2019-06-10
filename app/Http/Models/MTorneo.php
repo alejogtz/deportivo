@@ -17,6 +17,7 @@ class MTorneo extends Model{
         'categoria',
         'fecha_inaguracion', 
         'fecha_termino',
+        'categoria',
         'elimnado'
     ];
 }

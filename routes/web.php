@@ -16,7 +16,7 @@ Route::get('seleccionar','fixture\FixtureController@categorias');
 Route::get('fixtureEquipos/{equipos}','fixture\FixtureController@roundRobin');
 
 //INSERTAR PARTIDOS
-Route::get('seleccionar','fixture\FixtureController@insertar_partidos');
+Route::post('seleccionar2','fixture\FixtureController@insertar_partidos');
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
