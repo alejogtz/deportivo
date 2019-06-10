@@ -101,3 +101,24 @@ Route::get('jugador_equipo/no_en_equipo_json/{id}','fixture\JugadorEquipoControl
 Route::get('mapa',function () {
     return view('fixture/mapa');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Rutas de prueba - Alejo */
+Route::get('demo/{id}', 'partidos\CPartidosClasificatoria@finalesJugados');
+
+Route::get('ver', 'partidos\ControladorEtapaClasificatoria@verTorneos');
