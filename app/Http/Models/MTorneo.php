@@ -7,7 +7,7 @@ class MTorneo extends Model{
     protected $table = 'torneo';
 
     //llave primaria
-    protected $primarykey = 'id_torneo';
+    protected $primaryKey = 'id_torneo';
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
@@ -17,6 +17,7 @@ class MTorneo extends Model{
         'categoria',
         'fecha_inaguracion', 
         'fecha_termino',
+        'categoria',
         'elimnado'
     ];
 }

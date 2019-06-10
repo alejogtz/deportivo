@@ -19,6 +19,7 @@ use App\Http\Models\MCambio;
 use DB;
 
 
+
 class partidos_controller extends Controller
 {
     public function partidos_hoy($fecha,$fase,$torneo){
@@ -84,6 +85,7 @@ class partidos_controller extends Controller
         print "\n"."   equipo2  ".$Partido->equipo_visitante;*/
         //return view('info_arbitral/goles')->with('elocal',$Partido->equipo_local);
     }
+
 
 
     public function insertagol(Request $request/*$id_partidol,$goljugadorl,$golminutol,$contradel,$favordel,$tipol*/)
@@ -242,5 +244,20 @@ class partidos_controller extends Controller
         //return back();
     }
 
+
+    /*public function jugadores_equipo($equipo){
+        $users = MJugadorEquipo::select('*')
+            ->where('id_equipo',$equipo)
+            ->join('jugador', 'jugador_equipo.id_jugador', '=', 'jugador.id_jugador')
+            ->select('*')
+            ->get();
+            print $users;
+       }*/
+
+     /*public function dbtest(){
+        $users = DB::select('select * from equipo ');
+        return view('info_arbitral/tablageneral')->with('users',$users);
+        //return view('user.index', ['users' => $users]);
+     } */ 
 }
 ?>

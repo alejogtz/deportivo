@@ -1,6 +1,22 @@
 @extends('plantilla.plantilla')
 @section('content')
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!--ALERT FOR ALL-->
+@if ($message = Session::get('success'))
+<div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+</div>
+@endif
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <strong>Uppss!</strong> Algo salio mal, intentalo nuevamente.
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="m-3">
     <div class="table-title">
         <div class="row">
@@ -16,14 +32,14 @@
     </div>
 
     <div class="table-responsive-xl table-hover table-striped">
-        <table class="table">
+        <table id= "table" class="table">
             <thead>
                 <tr>
-                    <th scope="col">Identificador</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido Paterno</th>
                     <th scope="col">Apellido Materno</th>
-                    <th scope="col">Eliminado por bandera</th>
+                    <th scope="col">Disponible</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -34,16 +50,16 @@
                     <td>{{ $d->nombre }}</td>
                     <td>{{ $d->apellido_p }}</td>
                     <td>{{ $d->apellido_m }}</td>
-                    @if( $d->eliminado )
-                        <td>SI</td>
-                    @else
+                    @if( $d->elimnado )
                         <td>NO</td>
+                    @else
+                        <td>SI</td>
                     @endif
                     <td>
                         <a onclick = "editDirector({{ $d }})" href="#editDirectorModal" class="edit" data-toggle="modal">
                             <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                         </a>
-                        <a onclick = "deleteDirector({{ $d }})" href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                        <a onclick = "deleteDirector({{ $d }})" href="#deleteDirectorModal" class="delete" data-toggle="modal">
                             <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                         </a>
                     </td>
@@ -67,15 +83,15 @@
                     <div class="modal-body">					
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input name="nombre" type="text" class="form-control" required>
+                            <input name="nombre_a" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Apellido Paterno</label>
-                            <input name="apellido_p" type="text" class="form-control" required>
+                            <input name="apellido_p_a" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Apellido Materno</label>
-                            <input name="apellido_m" type="text" class="form-control" required>
+                            <input name="apellido_m_a" type="text" class="form-control" required>
                         </div>				
                     </div>
                     <div class="modal-footer">
@@ -88,7 +104,7 @@
     </div>
 
     <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <div id="deleteDirectorModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 {!!Form::open(array('url' => 'director/eliminar', 'method' => 'PUT','autocomplete' => 'off'))!!}
@@ -97,7 +113,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <input name="id_director" id="id_director" type="hidden" class="form-control" required>					
+                        <input name="id_director_d" id="id_director_d" type="hidden" class="form-control" required>					
                         <p>Estás seguro que desea eliminar permanentemente este campo?</p>
                         <p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
                     </div>
@@ -121,21 +137,21 @@
                     </div>
                     <div class="modal-body">					
                         <div class="form-group">
-                            <input name="id_director" id="id_director" type="hidden" class="form-control" required>
+                            <input name="id_director_e" id="id_director_e" type="hidden" class="form-control" required>
                             <label>Nombre</label>
-                            <input name="nombre" id="nombre" type="text" class="form-control" required>
+                            <input name="nombre_e" id="nombre_e" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Apellido Paterno</label>
-                            <input name="apellido_p" id="apellido_p" type="text" class="form-control" required>
+                            <input name="apellido_p_e" id="apellido_p_e" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Apellido Materno</label>
-                            <input name="apellido_m" id="apellido_m" type="text" class="form-control" required>
+                            <input name="apellido_m_e" id="apellido_m_e" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Eliminado por bandera</label>
-                            <select name="eliminado" id="eliminado" class="form-control">
+                            <select name="eliminado_e" id="eliminado_e" class="form-control">
                                 
                             </select>
                         </div>					
@@ -150,5 +166,7 @@
     </div>
 
 </div>
-<script src="{{ asset('assets/js/fixture/crud_script.js') }}"></script>
+
+
+
 @endsection

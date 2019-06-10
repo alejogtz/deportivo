@@ -7,7 +7,7 @@ class MEquipo extends Model{
     protected $table = 'equipo';
  
     //llave primaria
-    protected $primarykey = 'id_equipo';
+    protected $primaryKey = 'id_equipo';
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 
@@ -17,7 +17,8 @@ class MEquipo extends Model{
         'nombre',
         'fecha_inscripcion',
         'lugar_procedencia',
-        'elimnado'
+        'elimnado',
+        'categoria'
     ];
 
     public function directorT(){

@@ -7,7 +7,7 @@ class MDirectorT extends Model{
     protected $table = 'directort';
 
     //llave primaria
-    protected $primarykey = 'id_director';
+    protected $primaryKey = 'id_director';
     public $timestamps = false;
 
     //aqui los elementos a mostrarse en la tabla 

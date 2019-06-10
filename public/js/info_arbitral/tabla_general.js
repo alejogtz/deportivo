@@ -6,14 +6,26 @@ $(function () {
 
 function metodo_listar()
 {
-    var genero = document.getElementById("select-torneo").value;
-    $('#sel1').html("torneo"+genero);
-   /* $.get('lista_alumnos/'+genero+'', function (data){
-        var html_select = '<option value="">SELECCIONE</option>';
-        for (var i = 0; i < data.length; i++)
-          html_select += '<option value="'+data[i].id+'">'+data[i].nombre_completo+'</option>'
+    var id_t = document.getElementById("select-torneo").value;
+    $('#sel1').html("torneo"+id_t);
+    $.get('tabla_x_torneo/'+id_t+'', function (data){
+        var html_select = '<tr> ';
+        for (var i = 0; i < data.length; i++){
+        html_select += '<tr>';
+        html_select += '<th>'+(i+1)+'</th>';
+        html_select += '<td>'+data[i].equipo+'</td>';
+        html_select += '<td>'+data[i].pts+'</td>';
+        html_select += '<td>'+data[i].pj+'</td>';
+        html_select += '<td>'+data[i].v+'</td>';
+        html_select += '<td>'+data[i].e+'</td>';
+        html_select += '<td>'+data[i].d+'</td>';
+        html_select += '<td>'+data[i].gf+'</td>';
+        html_select += '<td>'+data[i].gc+'</td>';
+        html_select += '<td>'+data[i].dif+'</td>';
+        html_select += '</tr>';
+    }
    
-          $('#select-genero2').html(html_select);
+          $('#tabla').html(html_select);
    
-      });*/
+      });
 }
