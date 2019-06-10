@@ -59,10 +59,10 @@ class TorneoController extends Controller{
     }
 
     public function listado_torneos(){
-        //date_default_timezone_get;
         $date1 = date("Y-m-d"); 
         $al = MTorneo::select('id_torneo','nombre','categoria','fecha_inaguracion','fecha_termino','elimnado')
-		->where('fecha_termino','>=',$date1)// >=current_date//where('categoria',$categoria)
+        ->where('fecha_termino','>=',$date1)->where('elimnado','=','false')
+        // >=current_date//where('categoria',$categoria)
         ->get();
         return $al;
     }
