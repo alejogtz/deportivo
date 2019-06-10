@@ -40,6 +40,7 @@
         <a href="../jugador_equipo/registros" class="list-group-item list-group-item-action bg-light">Jugadores a Equipos</a>
         <a href="../torneos" class="list-group-item list-group-item-action bg-light">Informacion Arbitral</a>
         <a href="../tabla_general" class="list-group-item list-group-item-action bg-light">Tabla General</a>
+        <a href="../seleccionar" class="list-group-item list-group-item-action bg-light">Generar Fixture</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
