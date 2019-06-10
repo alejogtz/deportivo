@@ -117,10 +117,7 @@
   
   <script src="{{ asset('assets/vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/DataTables/js/dataTables.bootstrap4.min.js') }}"></script>
-  
-
   <script src="{{ asset('assets/js/fixture/crud_script.js') }}"></script>
-    
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {

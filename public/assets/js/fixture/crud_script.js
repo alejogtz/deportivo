@@ -93,7 +93,6 @@ function editEquipo(id) {
     document.getElementById("id_equipo_e").value = id.id_equipo;
     document.getElementById("nombre_e").value = id.nombre;
     document.getElementById("fecha_inscripcion_e").value = id.fecha_inscripcion;
-    document.getElementById("lugar_procedencia_e").value = id.lugar_procedencia;
 
     let $eliminado = document.getElementById("eliminado_e");
     var options = '';
@@ -119,6 +118,65 @@ function editEquipo(id) {
         }
         $directores.innerHTML = options_d;
     });
+
+    var $options = document.getElementById('categoria_e').options;
+    var opt = -1;
+    for (let i = 0; i < $options.length; i++) {
+        if($options[i].value == id.categoria){
+            //console.log($options[i].value + "   " + id.categoria)
+            opt = i;
+            break;
+        }       
+    }
+    document.getElementById('categoria_e').selectedIndex = opt;
+
+    var coord = id.lugar_procedencia.split(',');
+    document.getElementById('lugar_procedencia_e').value = coord[0]+','+coord[1];
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ29sZGVuaHVudGVyMjEiLCJhIjoiY2p3cGkxYnhtMHk5aTQ0bzZ4dnNkdzRhNiJ9.p6ZCYpoQ1vAyg6SLhTR8hw';
+    var map = new mapboxgl.Map({
+        container: 'map_e', // container id
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: coord, // starting position ,,
+        zoom: 14 // starting zoom
+    });
+
+
+    var marker = new mapboxgl.Marker({
+        draggable: true
+        })
+        .setLngLat(coord)
+        .addTo(map);
+        
+        function onDragEnd() {
+        var lngLat = marker.getLngLat();
+        var coordinates = document.getElementById('lugar_procedencia_e');
+        coordinates.value =lngLat.lng + ',' + lngLat.lat;
+        console.log(coordinates.value);
+        }
+        
+        marker.on('dragend', onDragEnd);
+    
+}
+
+function mapaEquipo(id){
+    var coord = id.lugar_procedencia.split(',');
+    document.getElementById('lugar_procedencia_e').value = coord[0]+','+coord[1];
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ29sZGVuaHVudGVyMjEiLCJhIjoiY2p3cGkxYnhtMHk5aTQ0bzZ4dnNkdzRhNiJ9.p6ZCYpoQ1vAyg6SLhTR8hw';
+    var map = new mapboxgl.Map({
+        container: 'map_equipo', // container id
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: coord, // starting position ,,
+        zoom: 14 // starting zoom
+    });
+
+
+    var marker = new mapboxgl.Marker({
+        draggable: false
+        })
+        .setLngLat(coord)
+        .addTo(map);
+        
+        
 }
 
 function agregaEquipo(){
@@ -139,7 +197,6 @@ function deleteTorneo(id) {
 function editTorneo(id) {
     document.getElementById("id_torneo_e").value = id.id_torneo;
     document.getElementById("nombre_e").value = id.nombre;
-    document.getElementById("categoria_e").value = id.categoria;
     document.getElementById("fecha_inaguracion_e").value = id.fecha_inaguracion;
     document.getElementById("fecha_termino_e").value = id.fecha_termino;
 
@@ -153,15 +210,17 @@ function editTorneo(id) {
         options += '<option value="' + 'true' + '" >NO</option>';
     }
     $eliminado.innerHTML = options;
-}
 
-
-function equipoSelecionado(){
-
-    $equipo = document.getElementById("equipo_selected");
-    document.getElementById("nombre_equipo").innerHTML = $equipo.options[$equipo.selectedIndex].innerHTML;
-    table_pertenece.ajax.url('../jugador_equipo/en_equipo_json/'+$equipo.value).load();
-    table_no_pertenece.ajax.url('../jugador_equipo/no_en_equipo_json/'+$equipo.value).load();    
+    var $options = document.getElementById('categoria_e').options;
+    var opt = -1;
+    for (let i = 0; i < $options.length; i++) {
+        if($options[i].value == id.categoria){
+            opt = i;
+            break;
+        }       
+    }
+    document.getElementById('categoria_e').selectedIndex = opt;
+    
 }
 
 function deleteDeEquipo(data,equipo){
@@ -208,86 +267,4 @@ $(document).ready(function() {
             "infoFiltered": ""
         }
     });
-});
-
-var table_pertenece = $('#table-pertence').DataTable({
-    "ajax": '../jugador_equipo/en_equipo_json/0',
-    "columns": [
-        {data: 'id_jugador'},
-        {data: 'nombre'},
-        {data: 'no_playera'},
-        {data: 'estatura'},
-        {data: 'posicion'},
-        {data: 'sexo'},
-        {data: 'edad'},
-        {data: 'action'}
-    ],
-    "language": {
-        "info": "_TOTAL_ registros",
-        "search": "Buscar",
-        "paginate": {
-            "next": "Siguiente",
-            "previous": "Anterior",
-        },
-        "lengthMenu": 'Mostrar <select >'+
-                    '<option value="10">10</option>'+
-                    '<option value="25">25</option>'+
-                    '<option value="50">50</option>'+
-                    '<option value="100">100</option>'+
-                    '<option value="-1">Todos</option>'+
-                    '</select> registros',
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "emptyTable": "No hay datos",
-        "zeroRecords": "No hay coincidencias", 
-        "infoEmpty": "",
-        "infoFiltered": ""
-    }
-});
-
-var table_no_pertenece = $('#table-no-pertence').DataTable({
-    "ajax": '../jugador_equipo/no_en_equipo_json/0',
-    "columns": [
-        {data: 'id_jugador'},
-        {data: 'nombre'},
-        {data: 'no_playera'},
-        {data: 'estatura'},
-        {data: 'posicion'},
-        {data: 'sexo'},
-        {data: 'edad'},
-        {data: 'action'}
-    ],
-    "language": {
-        "info": "_TOTAL_ registros",
-        "search": "Buscar",
-        "paginate": {
-            "next": "Siguiente",
-            "previous": "Anterior",
-        },
-        "lengthMenu": 'Mostrar <select >'+
-                    '<option value="10">10</option>'+
-                    '<option value="25">25</option>'+
-                    '<option value="50">50</option>'+
-                    '<option value="100">100</option>'+
-                    '<option value="-1">Todos</option>'+
-                    '</select> registros',
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "emptyTable": "No hay datos",
-        "zeroRecords": "No hay coincidencias", 
-        "infoEmpty": "",
-        "infoFiltered": ""
-    }
-});
-
-
-$(document).ready(function(){
-    $equipo = document.getElementById("equipo_selected");
-    if($equipo.value != 'Seleciona un equipo'){
-        table_pertenece.ajax.url('../jugador_equipo/en_equipo_json/'+$equipo.value).load();
-        table_no_pertenece.ajax.url('../jugador_equipo/no_en_equipo_json/'+$equipo.value).load();
-    }else{
-        table_pertenece;
-        table_no_pertenece;
-    }
 });

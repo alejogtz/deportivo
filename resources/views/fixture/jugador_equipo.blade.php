@@ -152,7 +152,12 @@
                 </div>
             </div>
         </div>
-    
-
 </div>
+<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.js') }}"></script>
+<script src="{{ asset('assets/vendor/DataTables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/DataTables/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/js/fixture/crud_script.js') }}"></script>
+<script src="{{ asset('assets/js/fixture/jugador_equipo.js') }}"></script>
 @endsection

@@ -60,11 +60,15 @@ class FixtureController extends Controller{
 	}
 
 	function insertar_partidos(Request $request){
+<<<<<<< HEAD
 		$torneo = $request->input('torneo_select');
+=======
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
 		$array = json_decode($request->partidos,true);
 		for ($i=0; $i < count($array); $i++) { 
 			$array2 = $array[$i];
 			for ($j=0; $j < count($array2); $j++) { 
+<<<<<<< HEAD
 				if($array2[$j]["Home"]!='bye' && $array2[$j]["Away"]!='bye'){                  
 					print_r('Fase: '.($i+1).': '.$array2[$j]["Home"].'  vs  '.$array2[$j]["Away"]);
 					echo '<br>'; 
@@ -78,6 +82,12 @@ class FixtureController extends Controller{
 		$torneo_e->save();
 		return back()
         ->with('success','Se han guardado correctamente los partidos.'); 
+=======
+				print_r('Fase: '.($i+1).'  :'.$array2[$j]["Home"].'  vs  '.$array2[$j]["Away"]);
+				echo '<br>'; 
+			}
+		}
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
 	}
 
 }

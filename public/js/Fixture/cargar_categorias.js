@@ -93,6 +93,14 @@ function getEquipos($equipos){
     var equipo_away;
     var route = '/fixtureEquipos/'+$equipos+'';
     $.get(route,function(data){
+<<<<<<< HEAD
+=======
+        var torneo = document.getElementById('select-torneos').value;
+        document.getElementById('torneo_select').value = torneo;
+        document.getElementById('partidos').value = JSON.stringify(data);
+        
+
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
         $(".modal-title").html("TORNEO: "+nombre_torneo+'');
         for(var i =0; i<data.length;i++){
             var pos = data[i];
@@ -121,4 +129,9 @@ function buscarEquipobyID($id){
             return no_equipos[i].nombre;
         }
     }
+}
+
+
+function convertToJson(data){
+    var json = { };
 }

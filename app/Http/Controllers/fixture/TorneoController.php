@@ -5,6 +5,8 @@ namespace App\Http\Controllers\fixture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\MTorneo;
+use Illuminate\Database\QueryException;
+
 
 
 class TorneoController extends Controller{
@@ -29,7 +31,8 @@ class TorneoController extends Controller{
             'nombre'=>$data->nombre_a,
             'categoria'=>$data->categoria_a,
             'fecha_inaguracion'=>$data->fecha_inaguracion_a,
-            'fecha_termino'=>$data->fecha_termino_a
+            'fecha_termino'=>$data->fecha_termino_a,
+            'categoria'=>$data->categoria_a
             ]);
         return back()
         ->with('success','Se ha agregado correctamente el registro.');

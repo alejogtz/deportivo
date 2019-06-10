@@ -38,6 +38,7 @@ class EquipoController extends Controller{
             'nombre'=>$data->nombre_a,
             'fecha_inscripcion'=>$data->fecha_inscripcion_a,
             'lugar_procedencia'=>$data->lugar_procedencia_a,
+            'categoria'=>$data->categoria_a
             ]);
         return back()
         ->with('success','Se ha agregado correctamente el registro.');
@@ -51,6 +52,7 @@ class EquipoController extends Controller{
         $editar->fecha_inscripcion = $data->fecha_inscripcion_e;
         $editar->lugar_procedencia = $data->lugar_procedencia_e;
         $editar->elimnado = $data->eliminado_e;
+        $editar->categoria = $data->categoria_e;
         $editar->save();
         return back()->with('success','Se ha actualizado correctamente el registro. actual');
     }

@@ -51,7 +51,11 @@
                         ...
                       </div>
                       <div class="modal-footer">
+<<<<<<< HEAD
                         {!!Form::open(array('url' => 'seleccionar2', 'method' => 'POST','autocomplete' => 'off'))!!}
+=======
+                          {!!Form::open(array('url' => 'seleccionar2', 'method' => 'POST','autocomplete' => 'off', 'files' => true))!!}
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
                           @csrf
                           <input type="hidden" id="torneo_select" name="torneo_select">
                           <input type="hidden" id="partidos" name="partidos" >
