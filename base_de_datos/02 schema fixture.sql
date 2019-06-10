@@ -1,15 +1,14 @@
-﻿/*
-drop table gol;
-drop table tarjeta;
-drop table cambio;
-drop table partido;
-drop table usuario;
-drop table torneo;
-drop table jugador_equipo;
-drop table jugador;
-drop table equipo;
-drop table directort;
-*/
+﻿-- drop table gol;
+-- drop table tarjeta;
+-- drop table cambio;
+-- drop table partido;
+-- drop table usuario;
+-- drop table torneo;
+-- drop table jugador_equipo;
+-- drop table jugador;
+-- drop table equipo;
+-- drop table directort;
+
 
 
 set datestyle to sql,dmy;
@@ -28,11 +27,9 @@ create table equipo(
 	nombre varchar (50),
 	fecha_inscripcion date,
 	lugar_procedencia varchar(50),
+	categoria varchar(30),
 	elimnado boolean default false
 );
-
-ALTER TABLE equipo
-add COLUMN  categoria varchar(30)
 
 create table jugador(
 	id_jugador SERIAL primary key,
@@ -45,7 +42,6 @@ create table jugador(
 	posicion varchar(20),
 	fecha_nac date,
 	foto text,
-	sexo char,
 	elimnado boolean default false
 );
 

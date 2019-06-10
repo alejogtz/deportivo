@@ -40,6 +40,7 @@
                     <th scope="col">Director Técnico</th>
                     <th scope="col">Fecha Inscripción</th>
                     <th scope="col">Procedencia</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Disponible</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -52,6 +53,7 @@
                     <td>{{ $d->id_director->nombre.' '. $d->id_director->apellido_p.' '.$d->id_director->apellido_m}}</td>
                     <td>{{ $d->fecha_inscripcion }}</td>
                     <td>{{ $d->lugar_procedencia }}</td>
+                    <td>{{ $d->categoria }}</td>
                     @if( $d->elimnado )
                         <td>NO</td>
                     @else
@@ -99,7 +101,23 @@
                         <div class="form-group">
                             <label>Lugar de Procedencia</label>
                             <input name="lugar_procedencia_a" type="text" class="form-control" required>
+                        </div>		
+                        <div class="form-group">
+                            <label>Categoria equipo</label>
+                            <select name="categoria_a" id="categoria_a" class="form-control" required>
+                                <option selected disabled>Seleciona una categoria...</option>
+                                <option value="Master Femenil">Master Femenil</option>
+                                <option value="Primera Fuerza Femenil">Primera Fuerza Femenil</option>
+                                <option value="Ponys Varonil">Ponys Varonil</option>
+                                <option value="Master Varonil">Master Varonil</option>
+                                <option value="Sub 15 Varonil">Sub 15 Varonil</option>
+                                <option value="Sub 15 Femenil">Sub 15 Femenil</option>
+                                <option value="Primera Fuerza Varonil">Primera Fuerza Varonil</option>
+                                <option value="Ponys Femenil">Ponys Femenil</option>
+                            </select>
                         </div>			
+                            
+
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -160,7 +178,20 @@
                         <div class="form-group">
                             <label>Lugar de Procedencia</label>
                             <input name="lugar_procedencia_e" id="lugar_procedencia_e" type="text" class="form-control" required>
-                        </div>	
+                        </div>
+                        <div class="form-group">
+                            <label>Categoria equipo</label>
+                            <select name="categoria_e" id="categoria_e" class="form-control" required>
+                                <option value="Master Femenil">Master Femenil</option>
+                                <option value="Primera Fuerza Femenil">Primera Fuerza Femenil</option>
+                                <option value="Ponys Varonil">Ponys Varonil</option>
+                                <option value="Master Varonil">Master Varonil</option>
+                                <option value="Sub 15 Varonil">Sub 15 Varonil</option>
+                                <option value="Sub 15 Femenil">Sub 15 Femenil</option>
+                                <option value="Primera Fuerza Varonil">Primera Fuerza Varonil</option>
+                                <option value="Ponys Femenil">Ponys Femenil</option>
+                            </select>
+                        </div>		
                         <div class="form-group">
                             <label>Disponible</label>
                             <select name="eliminado_e" id="eliminado_e" class="form-control">
