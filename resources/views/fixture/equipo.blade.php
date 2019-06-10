@@ -1,5 +1,11 @@
 @extends('plantilla.plantilla')
 @section('content')
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+<link href="{{ asset('assets/css/registros.css') }} " rel="stylesheet">
+
+
 <!--ALERT FOR ALL-->
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
@@ -52,7 +58,11 @@
                     <td>{{ $d->nombre }}</td>
                     <td>{{ $d->id_director->nombre.' '. $d->id_director->apellido_p.' '.$d->id_director->apellido_m}}</td>
                     <td>{{ $d->fecha_inscripcion }}</td>
-                    <td>{{ $d->lugar_procedencia }}</td>
+                    <td>
+                        <a onclick = "mapaEquipo({{ $d }})" href="#mapaEquipoModal" class="edit" data-toggle="modal">
+                            <i class="material-icons" data-toggle="tooltip" title="Mapa">map</i>
+                        </a>
+                    </td>
                     <td>{{ $d->categoria }}</td>
                     @if( $d->elimnado )
                         <td>NO</td>
@@ -100,7 +110,11 @@
                         </div>		
                         <div class="form-group">
                             <label>Lugar de Procedencia</label>
-                            <input name="lugar_procedencia_a" type="text" class="form-control" required>
+                            <div class="d-flex justify-content-center img-fluid">
+                                <div id="map" class="s9 mapa">
+                                </div>
+                            </div>
+                            <input name="lugar_procedencia_a" id="lugar_procedencia_a" type="hidden" class="form-control" required>
                         </div>		
                         <div class="form-group">
                             <label>Categoria equipo</label>
@@ -115,9 +129,7 @@
                                 <option value="Primera Fuerza Varonil">Primera Fuerza Varonil</option>
                                 <option value="Ponys Femenil">Ponys Femenil</option>
                             </select>
-                        </div>			
-                            
-
+                        </div>	
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -151,6 +163,32 @@
         </div>
     </div>
 
+
+    <div id="mapaEquipoModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    {!!Form::open(array('url' => 'equipo/eliminar', 'method' => 'PUT','autocomplete' => 'off'))!!}
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Lugar de Procedencia del Equipo</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Lugar de Procedencia</label>
+                                <div class="d-flex justify-content-center img-fluid">
+                                    <div id="map_equipo" class="s9 mapa">
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+                        </div>
+                    {!!Form::close()!!}
+                </div>
+            </div>
+        </div>
+
     <!-- Edir Modal HTML -->
     <div id="editEquipoModal" class="modal fade">
         <div class="modal-dialog">
@@ -174,11 +212,15 @@
                         <div class="form-group">
                             <label>Fecha de Inscripción</label>
                             <input name="fecha_inscripcion_e" id="fecha_inscripcion_e" type="date" class="form-control" required>
-                        </div>		
+                        </div>	
                         <div class="form-group">
                             <label>Lugar de Procedencia</label>
-                            <input name="lugar_procedencia_e" id="lugar_procedencia_e" type="text" class="form-control" required>
-                        </div>
+                            <div class="d-flex justify-content-center img-fluid">
+                                <div id="map_e" class="s9 mapa">
+                                </div>
+                            </div>
+                            <input name="lugar_procedencia_e" id="lugar_procedencia_e" type="hidden" class="form-control" required>
+                        </div>		
                         <div class="form-group">
                             <label>Categoria equipo</label>
                             <select name="categoria_e" id="categoria_e" class="form-control" required>
@@ -207,6 +249,6 @@
             </div>
         </div>
     </div>
-
 </div>
+<script src="{{ asset('assets/js/fixture/map.js') }}"></script>
 @endsection

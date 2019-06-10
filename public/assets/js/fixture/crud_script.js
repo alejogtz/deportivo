@@ -93,7 +93,6 @@ function editEquipo(id) {
     document.getElementById("id_equipo_e").value = id.id_equipo;
     document.getElementById("nombre_e").value = id.nombre;
     document.getElementById("fecha_inscripcion_e").value = id.fecha_inscripcion;
-    document.getElementById("lugar_procedencia_e").value = id.lugar_procedencia;
 
     let $eliminado = document.getElementById("eliminado_e");
     var options = '';
@@ -130,7 +129,54 @@ function editEquipo(id) {
         }       
     }
     document.getElementById('categoria_e').selectedIndex = opt;
+
+    var coord = id.lugar_procedencia.split(',');
+    document.getElementById('lugar_procedencia_e').value = coord[0]+','+coord[1];
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ29sZGVuaHVudGVyMjEiLCJhIjoiY2p3cGkxYnhtMHk5aTQ0bzZ4dnNkdzRhNiJ9.p6ZCYpoQ1vAyg6SLhTR8hw';
+    var map = new mapboxgl.Map({
+        container: 'map_e', // container id
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: coord, // starting position ,,
+        zoom: 14 // starting zoom
+    });
+
+
+    var marker = new mapboxgl.Marker({
+        draggable: true
+        })
+        .setLngLat(coord)
+        .addTo(map);
+        
+        function onDragEnd() {
+        var lngLat = marker.getLngLat();
+        var coordinates = document.getElementById('lugar_procedencia_e');
+        coordinates.value =lngLat.lng + ',' + lngLat.lat;
+        console.log(coordinates.value);
+        }
+        
+        marker.on('dragend', onDragEnd);
     
+}
+
+function mapaEquipo(id){
+    var coord = id.lugar_procedencia.split(',');
+    document.getElementById('lugar_procedencia_e').value = coord[0]+','+coord[1];
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ29sZGVuaHVudGVyMjEiLCJhIjoiY2p3cGkxYnhtMHk5aTQ0bzZ4dnNkdzRhNiJ9.p6ZCYpoQ1vAyg6SLhTR8hw';
+    var map = new mapboxgl.Map({
+        container: 'map_equipo', // container id
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: coord, // starting position ,,
+        zoom: 14 // starting zoom
+    });
+
+
+    var marker = new mapboxgl.Marker({
+        draggable: false
+        })
+        .setLngLat(coord)
+        .addTo(map);
+        
+        
 }
 
 function agregaEquipo(){
