@@ -10,6 +10,14 @@ use App\Http\Models\MTorneo;
 use App\Http\Models\MJugador;
 use App\Http\Models\MFase;
 use App\Http\Models\MJugadorEquipo;
+use App\Http\Models\MGol;
+use App\Http\Models\MTarjeta;
+use App\Http\Models\MTitular;
+use App\Http\Models\MSuplente;
+use App\Http\Models\MCambio;
+
+use DB;
+
 
 class partidos_controller extends Controller
 {
@@ -77,13 +85,162 @@ class partidos_controller extends Controller
         //return view('info_arbitral/goles')->with('elocal',$Partido->equipo_local);
     }
 
-    /*public function jugadores_equipo($equipo){
-        $users = MJugadorEquipo::select('*')
-            ->where('id_equipo',$equipo)
-            ->join('jugador', 'jugador_equipo.id_jugador', '=', 'jugador.id_jugador')
-            ->select('*')
-            ->get();
-            print $users;
-       }*/
+
+    public function insertagol(Request $request/*$id_partidol,$goljugadorl,$golminutol,$contradel,$favordel,$tipol*/)
+    {
+        //print($request->id_jugador[0]);
+
+        for($i=0; $i<count($request->minutol); $i++)
+            {
+                $id_partido = $request->id_partido[0];
+                $id_equipo = $request->equipol[0];
+                $id_jugador = $request->id_jugadorl[$i];
+                $minuto = $request->minutol[$i];
+            
+                //print(""+$id_partido);
+
+                MGol::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'id_jugador'=>$id_jugador,
+                            'minuto'=>$minuto]);
+            }
+
+
+        for($i=0; $i<count($request->minutov); $i++)
+            {
+                $id_partido = $request->id_partido[0];
+                $id_equipo = $request->equipov[0];
+                $id_jugador = $request->id_jugadorv[$i];
+                $minuto = $request->minutov[$i];
+            
+                //print(""+$id_partido);
+
+                MGol::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'id_jugador'=>$id_jugador,
+                            'minuto'=>$minuto]);
+            }
+        //return back();
+    }
+
+    public function insertatitulares(Request $request/*$id_partidol,$goljugadorl,$golminutol,$contradel,$favordel,$tipol*/)
+    {
+        //print($request->id_jugador[0]);
+        
+        for($i=0; $i<count($request->id_jugadorl); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_equipo = $request->equipol[0];
+            $id_jugador = $request->id_jugadorl[$i];
+            
+            //print(""+$id_partido);
+
+            MTitular::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'id_jugador'=>$id_jugador]);
+        }
+
+        for($i=0; $i<count($request->id_jugadorv); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_equipo = $request->equipov[0];
+            $id_jugador = $request->id_jugadorv[$i];
+            
+            //print(""+$id_partido);
+
+            MTitular::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'id_jugador'=>$id_jugador]);
+        }
+        //return back();
+    }
+
+    public function insertatarjeta(Request $request/*$id_partidol,$goljugadorl,$golminutol,$contradel,$favordel,$tipol*/)
+    {
+        //print($request->id_jugador[0]);
+        
+        for($i=0; $i<count($request->minutol); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_jugador = $request->id_jugadorl[$i];
+            $minuto = $request->minutol[$i];
+            $tipo = $request->tfaltal[$i];
+            
+            //print(""+$id_partido);
+
+            MTarjeta::insert(['id_partido'=>$id_partido,'id_jugador'=>$id_jugador,'minuto'=>$minuto,
+                    'tipo'=>$tipo]);
+        }
+
+        for($i=0; $i<count($request->minutov); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_jugador = $request->id_jugadorv[$i];
+            $minuto = $request->minutov[$i];
+            $tipo = $request->tfaltav[$i];
+            
+            //print(""+$id_partido);
+
+            MTarjeta::insert(['id_partido'=>$id_partido,'id_jugador'=>$id_jugador,'minuto'=>$minuto,
+                    'tipo'=>$tipo]);
+        }
+        //return back();
+    }
+
+
+    public function insertasuplentes(Request $request/*$id_partidol,$goljugadorl,$golminutol,$contradel,$favordel,$tipol*/)
+    {
+        //print($request->id_jugador[0]);
+        
+        for($i=0; $i<count($request->id_jugadorl); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_equipo = $request->equipol[0];
+            $id_jugador = $request->id_jugadorl[$i];
+            
+            //print(""+$id_partido);
+
+            MSuplente::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'id_jugador'=>$id_jugador]);
+        }
+
+        for($i=0; $i<count($request->id_jugadorv); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_equipo = $request->equipov[0];
+            $id_jugador = $request->id_jugadorv[$i];
+            
+            //print(""+$id_partido);
+
+            MSuplente::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'id_jugador'=>$id_jugador]);
+        }
+        //return back();
+    }
+
+    public function insertacambios(Request $request/*$id_partidol,$goljugadorl,$golminutol,$contradel,$favordel,$tipol*/)
+    {
+        //print($request->id_jugador[0]);
+        
+        for($i=0; $i<count($request->id_jugadorel); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_equipo = $request->equipol[0];
+            $jugador_entra = $request->id_jugadorel[$i];
+            $jugador_sale = $request->id_jugadorsl[$i];
+            $minuto = $request->minutol[$i];
+            
+            //print(""+$id_partido);
+
+            MCambio::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'jugador_entra'=>$jugador_entra,
+                            'jugador_sale'=>$jugador_sale,'minuto'=>$minuto]);
+        }
+
+        for($i=0; $i<count($request->id_jugadorev); $i++)
+        {
+            $id_partido = $request->id_partido[0];
+            $id_equipo = $request->equipov[0];
+            $jugador_entra = $request->id_jugadorev[$i];
+            $jugador_sale = $request->id_jugadorsv[$i];
+            $minuto = $request->minutov[$i];
+            
+            //print(""+$id_partido);
+
+            MCambio::insert(['id_partido'=>$id_partido,'id_equipo'=>$id_equipo,'jugador_entra'=>$jugador_entra,
+                            'jugador_sale'=>$jugador_sale,'minuto'=>$minuto]);
+        }
+        //return back();
+    }
+
 }
 ?>

@@ -19,9 +19,15 @@ Route::get('tarjetas_por_dia/{fecha}&{fase}&{torneo}','info_arbitral\partidos_co
 Route::get('getCategorias','info_arbitral\partidos_controller@getCategorias');
 Route::get('getFases/{torneo}','info_arbitral\partidos_controller@fases_categoria');
 Route::get('fase_seleccionada/{jornada}&{torneo}','info_arbitral\partidos_controller@calendario_x_fase');
+
 Route::get('registro/{idpar}','info_arbitral\partidos_controller@verRegistro');//muestra la vista para registro de resultados
 Route::get('registro/registro2/{idequi}','info_arbitral\partidos_controller@verRegistro2');
-
+Route::post('registro/insertargl/','info_arbitral\partidos_controller@insertagol');
+Route::post('registro/insertatar/','info_arbitral\partidos_controller@insertatarjeta');
+Route::post('registro/insertartit/','info_arbitral\partidos_controller@insertatitulares');
+Route::post('registro/insertarsup/','info_arbitral\partidos_controller@insertasuplentes');
+Route::post('registro/insertarcam/','info_arbitral\partidos_controller@insertacambios');
+/*{id_partidol}&{goljugadorl}&{golminutol}&{contradel}&{favordel}&{tipol}*/
 Route::get('jugadores/{equipo}','info_arbitral\partidos_controller@jugadores_equipo');
 
 Route::get('tabla_general', 'info_arbitral\tabla_general@tabla_general');

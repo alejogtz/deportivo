@@ -2,9 +2,9 @@
 namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class MGol extends Model{
+class MTitular extends Model{
     //nombre de la tabla
-    protected $table = 'gol';
+    protected $table = 'titular';
 
     //llave primaria
     protected $primarykey = null;
@@ -15,9 +15,6 @@ class MGol extends Model{
         'id_partido',
         'id_equipo',
         'id_jugador',
-        'minuto',
-        /*'equipo_en_contra',
-        'equipo_en_favor_de',*/
         //'eliminado'
     ];
 

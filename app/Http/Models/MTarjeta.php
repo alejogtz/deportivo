@@ -15,9 +15,8 @@ class MTarjeta extends Model{
         'id_partido',
         'id_jugador',
         'minuto',
-        'id_equipo',
         'tipo',
-        'eliminado'
+        //'eliminado'
     ];
 
     public function partido(){
