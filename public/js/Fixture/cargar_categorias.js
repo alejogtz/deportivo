@@ -111,7 +111,8 @@ function getEquipos($equipos){
     $.get(route,function(data){
         var torneo = document.getElementById('select-torneos').value;
         document.getElementById('torneo_select').value = torneo;
-        document.getElementById('partidos').value = data;
+        document.getElementById('partidos').value = JSON.stringify(data);
+        
 
         $(".modal-title").html("TORNEO: "+nombre_torneo+'');
         for(var i =0; i<data.length;i++){
@@ -138,4 +139,9 @@ function buscarEquipobyID($id){
         }
         
     }
+}
+
+
+function convertToJson(data){
+    var json = { };
 }

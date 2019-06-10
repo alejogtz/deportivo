@@ -46,13 +46,13 @@
                         ...
                       </div>
                       <div class="modal-footer">
-                        <form action="seleccionar" method="get"> 
+                          {!!Form::open(array('url' => 'seleccionar2', 'method' => 'POST','autocomplete' => 'off', 'files' => true))!!}
                           @csrf
-                          <input type="hidden" id="torneo_selec" name="torneo_select">
+                          <input type="hidden" id="torneo_select" name="torneo_select">
                           <input type="hidden" id="partidos" name="partidos" >
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                           <button type="submit" class="btn btn-primary" id="guardar" >Guardar cambios</button>
-                        </form>
+                          {!!Form::close()!!}
                       </div>
                     </div>
                   </div>

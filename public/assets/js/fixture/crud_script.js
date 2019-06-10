@@ -129,7 +129,6 @@ function editEquipo(id) {
             break;
         }       
     }
-    console.log(opt);
     document.getElementById('categoria_e').selectedIndex = opt;
     
 }
@@ -152,7 +151,6 @@ function deleteTorneo(id) {
 function editTorneo(id) {
     document.getElementById("id_torneo_e").value = id.id_torneo;
     document.getElementById("nombre_e").value = id.nombre;
-    document.getElementById("categoria_e").value = id.categoria;
     document.getElementById("fecha_inaguracion_e").value = id.fecha_inaguracion;
     document.getElementById("fecha_termino_e").value = id.fecha_termino;
 
@@ -166,6 +164,17 @@ function editTorneo(id) {
         options += '<option value="' + 'true' + '" >NO</option>';
     }
     $eliminado.innerHTML = options;
+
+    var $options = document.getElementById('categoria_e').options;
+    var opt = -1;
+    for (let i = 0; i < $options.length; i++) {
+        if($options[i].value == id.categoria){
+            opt = i;
+            break;
+        }       
+    }
+    document.getElementById('categoria_e').selectedIndex = opt;
+    
 }
 
 function deleteDeEquipo(data,equipo){

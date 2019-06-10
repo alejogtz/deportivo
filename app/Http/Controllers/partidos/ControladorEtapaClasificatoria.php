@@ -222,37 +222,4 @@ class ControladorEtapaClasificatoria extends Controller
         // 1 de ida, 1 de vuelta
         return $partidosJugados == 2;
     }
-
-
-    /**------------------------------------------------------------------------------------------
-     * |
-     * |
-     * |
-     * |                            PRUEBAS
-     * |
-     * |
-     * |-------------------------------------------------------------------------------------------
-     */
-
-
-    public function verTorneos()
-    {
-        //$arrayx = MPartido::get()->all();
-        
-        //$arrayx = DB::select("select t.equipo,t.pts,t.pj,t.v,t.e,t.d,t.gf,t.gc,t.dif from (select * from torneo(?) ) as t order by t.pts limit 16 ", array(1));
-
-        $aver = $this->todosPartidosJugados(1);
-
-        echo '<pre>';
-        echo $aver? 'True': 'False';
-        echo '</pre>';
-
-        echo '<pre>';
-        //echo print_r($arrayx);
-        echo '</pre>';
-
-        echo '<pre>';
-        //echo print_r($array_1[0]->attributes['id_partido'] );
-        echo '</pre>';
-    }
 }

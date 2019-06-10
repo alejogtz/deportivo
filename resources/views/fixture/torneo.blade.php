@@ -88,17 +88,27 @@
                             <input name="nombre_a" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Categoria</label>
-                            <input name="categoria_a" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
                             <label>Fecha Inauguración</label>
                             <input name="fecha_inaguracion_a" type="date" class="form-control" required>
                         </div>	
                         <div class="form-group">
                             <label>Fecha Termino</label>
                             <input name="fecha_termino_a" type="date" class="form-control" required>
-                        </div>				
+                        </div>
+                        <div class="form-group">
+                            <label>Categoria del torneo</label>
+                            <select name="categoria_a" id="categoria_a" class="form-control" required>
+                                <option selected disabled>Selecciona una categoria...</option>
+                                <option value="Master Femenil">Master Femenil</option>
+                                <option value="Primera Fuerza Femenil">Primera Fuerza Femenil</option>
+                                <option value="Ponys Varonil">Ponys Varonil</option>
+                                <option value="Master Varonil">Master Varonil</option>
+                                <option value="Sub 15 Varonil">Sub 15 Varonil</option>
+                                <option value="Sub 15 Femenil">Sub 15 Femenil</option>
+                                <option value="Primera Fuerza Varonil">Primera Fuerza Varonil</option>
+                                <option value="Ponys Femenil">Ponys Femenil</option>
+                            </select>
+                        </div>						
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -148,16 +158,25 @@
                             <input name="nombre_e" id="nombre_e" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Categoria</label>
-                            <input name="categoria_e" id="categoria_e" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
                             <label>Fecha de Incio</label>
                             <input name="fecha_inaguracion_e" id="fecha_inaguracion_e" type="date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Fecha de Cierre</label>
                             <input name="fecha_termino_e" id="fecha_termino_e" type="date" class="form-control" required>
+                        </div>	
+                        <div class="form-group">
+                            <label>Categoria del torneo</label>
+                            <select name="categoria_e" id="categoria_e" class="form-control" required>
+                                <option value="Master Femenil">Master Femenil</option>
+                                <option value="Primera Fuerza Femenil">Primera Fuerza Femenil</option>
+                                <option value="Ponys Varonil">Ponys Varonil</option>
+                                <option value="Master Varonil">Master Varonil</option>
+                                <option value="Sub 15 Varonil">Sub 15 Varonil</option>
+                                <option value="Sub 15 Femenil">Sub 15 Femenil</option>
+                                <option value="Primera Fuerza Varonil">Primera Fuerza Varonil</option>
+                                <option value="Ponys Femenil">Ponys Femenil</option>
+                            </select>
                         </div>	
                         <div class="form-group">
                             <label>Disponible</label>

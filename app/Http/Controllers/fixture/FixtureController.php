@@ -118,8 +118,14 @@ class FixtureController extends Controller{
 	}
 
 	function insertar_partidos(Request $request){
-			
-		return view('fixture/seleccionar_equipos');
+		$array = json_decode($request->partidos,true);
+		for ($i=0; $i < count($array); $i++) { 
+			$array2 = $array[$i];
+			for ($j=0; $j < count($array2); $j++) { 
+				print_r('Fase: '.($i+1).'  :'.$array2[$j]["Home"].'  vs  '.$array2[$j]["Away"]);
+				echo '<br>'; 
+			}
+		}
 	}
 
 }

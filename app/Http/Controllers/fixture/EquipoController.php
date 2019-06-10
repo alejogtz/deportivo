@@ -38,7 +38,7 @@ class EquipoController extends Controller{
             'nombre'=>$data->nombre_a,
             'fecha_inscripcion'=>$data->fecha_inscripcion_a,
             'lugar_procedencia'=>$data->lugar_procedencia_a,
-            'categoria'=>$data->categoria
+            'categoria'=>$data->categoria_a
             ]);
         return back()
         ->with('success','Se ha agregado correctamente el registro.');
