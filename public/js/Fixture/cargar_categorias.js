@@ -77,28 +77,12 @@ function addTeam(comp){
 }
 
 function generarFixture(tamano){
-   if(tamano>=4){
+   if(tamano>=16){
         $("#generar").removeAttr("disabled");
     }
     else
         $("#generar").attr("disabled", true);
     var arreglo = equipos;
-    /*$("#generar").click(getEquipos(arreglo));
-        
-        /*$("#generar").click(getEquipos(arreglo));
-        /*
-            'id_partido',
-            'id_torneo',
-            'tipo_fase',
-            'lugar',
-            'hora',
-            'fecha',
-            'equipo_local',
-            'equipo_visitante',
-            'estatus_partido',
-            'eliminado'
-                
-    });*/
 }
 
 
@@ -109,24 +93,32 @@ function getEquipos($equipos){
     var equipo_away;
     var route = '/fixtureEquipos/'+$equipos+'';
     $.get(route,function(data){
+<<<<<<< HEAD
+=======
         var torneo = document.getElementById('select-torneos').value;
         document.getElementById('torneo_select').value = torneo;
         document.getElementById('partidos').value = JSON.stringify(data);
         
 
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
         $(".modal-title").html("TORNEO: "+nombre_torneo+'');
         for(var i =0; i<data.length;i++){
             var pos = data[i];
             html_select+='<div id="'+(i+1)+'"><h4>FASE '+(i+1)+': </h4></div>'
+            var aux = 1;
             for(var j=0; j<pos.length; j++){
                 var partido = pos[j];
                 if(partido.Away!='bye' && partido.Home!='bye'){
                     equipo_home = buscarEquipobyID(partido.Home);
                     equipo_away = buscarEquipobyID(partido.Away);
-                    html_select+='<h6>Partido #'+(j+1)+': Equipo No: '+partido.Home+' '+equipo_home+'  VS Equipo No: '+partido.Away+' '+equipo_away+' </h6> <br>'
+                    html_select+='<h6>Partido #'+aux+': Equipo No: '+partido.Home+' '+equipo_home+'  VS Equipo No: '+partido.Away+' '+equipo_away+' </h6> <br>'
+                    aux++;
                 }
             }
         }
+        var myJsonString = JSON.stringify(data);
+        document.getElementById('torneo_select').value = id;
+        document.getElementById('partidos').value = myJsonString;
         $(".modal-body").html(html_select);
     });
 }
@@ -134,10 +126,8 @@ function getEquipos($equipos){
 function buscarEquipobyID($id){
     for(var i =0; i<no_equipos.length; i++){
         if(no_equipos[i].id_equipo==$id){
-            //console.log(no_equipos[i].id_equipo +'nombre: '+no_equipos[i].nombre);
             return no_equipos[i].nombre;
         }
-        
     }
 }
 

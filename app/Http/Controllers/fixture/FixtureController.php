@@ -5,7 +5,8 @@ namespace App\Http\Controllers\fixture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\MEquipo;
-
+use App\Http\Models\MPartido;
+use App\Http\Models\MTorneo;
 /*
 1.- Fixture 
 	El algoritmo va agenerar los patidos y los va a guardar(base) (con el estas seguro que desas generarlo?) Se van a mostrar la lista de partidos generados en una vista(front end)
@@ -29,69 +30,10 @@ class FixtureController extends Controller{
 		->pluck('categoria','id_equipo');
         return view('fixture/seleccionar_equipos')->with('categorias',$enviar);
 	}
-
-	/*function fixture($equipos){
-		
-		$equipos=substr($equipos,1);
-		//print_r("equiposss",$players);
-		echo($equipos);
-		echo('<pre>');
-
-		$players = explode(" ",$equipos);
-		echo('</pre>');
-		shuffle($players);
-		//$players = array('A','B','C','D');
-		$matchs = array();
-		
-			foreach($players as $k){
-				foreach($players as $j){
-					if($k == $j){
-						continue;
-					}
-					$z = array($k,$j);
-					sort($z);
-					if(!in_array($z,$matchs)){
-						$matchs[] = $z;
-					}
-				}
-			}
-
-			echo('<pre>');
-			print_r($matchs);
-			echo('</pre>');
-		//print_r($players);
-	}*/
-	
-	//listar categorias
-	/*public function cargarCategorias(){
-		$categorias = MEquipo::select('categoria')
-								->groupBy('categoria')
-								->orderBy('categoria')
-								->get();
-		return view('fixture/seleccionarequipo')->with('categorias',
-			$categorias);
-
-	}
-
-	public function categorias(){
-        $categoria = MEquipo::pluck('categoria','id_equipo');
-        return view('fixture/seleccionarequipo')->with('categoria',$categoria);
-    }
-
-	public function listar_equipos($categoria){
-		$equipos = MEquipo::select('nombre','id_equipo')
-		->where('categoria',$categoria)
-		->get();
-		return view ('fixture/seleccionarequipo')->with('equipos',$equipos);
-	}*/
 	function roundRobin($equipos){// array $teams ){
 		$equipos=substr($equipos,1);
-		/*echo('<pre>');*/
-		//echo($equipos);		
-		//echo('</pre>');
 
 		$teams = explode(" ",$equipos);
-		//print_r($teams);
 		shuffle($teams);
 
 		if (count($teams)%2 != 0){
@@ -118,14 +60,34 @@ class FixtureController extends Controller{
 	}
 
 	function insertar_partidos(Request $request){
+<<<<<<< HEAD
+		$torneo = $request->input('torneo_select');
+=======
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
 		$array = json_decode($request->partidos,true);
 		for ($i=0; $i < count($array); $i++) { 
 			$array2 = $array[$i];
 			for ($j=0; $j < count($array2); $j++) { 
+<<<<<<< HEAD
+				if($array2[$j]["Home"]!='bye' && $array2[$j]["Away"]!='bye'){                  
+					print_r('Fase: '.($i+1).': '.$array2[$j]["Home"].'  vs  '.$array2[$j]["Away"]);
+					echo '<br>'; 
+					MPartido::insert(['id_torneo'=>$torneo,'tipo_fase'=>'Regular','numero_fase'=>($i+1) ,'equipo_local'=>$array2[$j]["Home"],'equipo_visitante'=>$array2[$j]["Away"] ]);
+				}
+			}
+		}
+		//cambiamos eliminado de torneo a true para que no se vuelva a cargar
+		$torneo_e=MTorneo::find($torneo);
+		$torneo_e->elimnado='true';
+		$torneo_e->save();
+		return back()
+        ->with('success','Se han guardado correctamente los partidos.'); 
+=======
 				print_r('Fase: '.($i+1).'  :'.$array2[$j]["Home"].'  vs  '.$array2[$j]["Away"]);
 				echo '<br>'; 
 			}
 		}
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
 	}
 
 }

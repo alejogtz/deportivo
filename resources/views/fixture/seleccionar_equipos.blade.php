@@ -1,27 +1,32 @@
 @extends('plantilla.plantilla')
   @section('content')
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script-->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.modal.min.js"></script>
     <script src="js/Fixture/cargar_categorias.js"></script>
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+    </div>
+    @endif
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <strong>Uppss!</strong> Algo salio mal, intentalo nuevamente.
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div class="m-3">
         
       <h1>SELECCIONA UN TORNEO</h1>
       <select class="form-control" id="select-torneos">
           <option disabled selected>SELECCIONE UN TORNEO</option>
       </select>
-            <!--select class="form-control" id="select-categoria" >
-                <option disabled selected>SELECCIONE UN TORNEO</option>
-                <option value='Ponys Femenil'>Ponys Femenil</option>
-                <option value='Ponys Varonil'>Ponys Varonil</option>
-                <option value='Sub 15 Femenil'>Sub 15 Femenil</option>
-                <option value='Sub 15 Varonil'>Sub 15 Varonil</option>
-                <option value='Primera Fuerza Femenil'>Primera Fuerza Femenil</option>
-                <option value='Primera Fuerza Varonil'>Primera Fuerza Varonil</option>
-                <option value='Master Femenil'>Master Femenil</option>
-                <option value='Master Varonil'>Master Varonil</option>
-            </select-->
             <br>
             <div id="categorias">
               <div class="form-row" id="select-equipos">
@@ -46,7 +51,11 @@
                         ...
                       </div>
                       <div class="modal-footer">
+<<<<<<< HEAD
+                        {!!Form::open(array('url' => 'seleccionar2', 'method' => 'POST','autocomplete' => 'off'))!!}
+=======
                           {!!Form::open(array('url' => 'seleccionar2', 'method' => 'POST','autocomplete' => 'off', 'files' => true))!!}
+>>>>>>> 134252a52609cfd08b96fb99c72c2d8a4f3f6a3e
                           @csrf
                           <input type="hidden" id="torneo_select" name="torneo_select">
                           <input type="hidden" id="partidos" name="partidos" >
